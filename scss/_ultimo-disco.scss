@@ -1,0 +1,15 @@
+/*******************************************************************/
+/**********************   ULTIMO-DISCO.HTML   **********************/
+/*******************************************************************/
+
+.ultimoDiscoParrafo {
+    @include justifyText;
+}
+
+.ultimoDiscoBold {
+    @include boldText;
+}
+
+.ultimoDiscoItalic {
+    @include italicText;
+}

@@ -1,0 +1,38 @@
+/*******************************************************************/
+/*********************   PROXIMOS-SHOWS.HTML   *********************/
+/*******************************************************************/
+
+.bgDegrade {
+    border-top: 2px solid rgb(14, 15, 50);
+    background: linear-gradient(180deg, rgba(145, 148, 252, 0.566) 80%, bisque);
+    z-index: 1;
+}
+
+.proximosShowsBold {
+    @include boldText;
+}
+
+.proximosShowsItalic {
+    @include italicText;
+}
+
+@media (max-width: 600px) {
+    .proximosShowsItalic {
+        font-size: small;
+    }
+}
+
+/* Botones de compra de entradas */
+
+.showsModalHeader {
+    background-color: rgb(137, 152, 177);
+
+    h2 {
+        font-weight: bold;
+    }
+}
+
+.showsModalBody,
+.showsModalFooter {
+    background-color: rgb(240, 242, 245);
+}

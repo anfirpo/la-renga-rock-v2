@@ -1,0 +1,149 @@
+/*******************************************************************/
+/************************   CONTACTO.HTML   ************************/
+/*******************************************************************/
+
+/************************************************/
+/* CSS para usar con el código que había con BS */
+/************************************************/
+
+/* .formBold {
+    font-weight: $form-bold;
+} */
+
+/* CSS sin usar BS */
+.contactoFlexContainer {
+    &::before {
+        content: "";
+        background-size: cover;
+        position: fixed;
+        background-position: center;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        opacity: 0.1;
+        z-index: -1;
+    }
+
+    /*     border: 1px solid red; */
+    display: flex;
+    flex-flow: wrap;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.formContacto {
+    /*     border: 1px solid red; */
+    margin: 10px;
+    width: 800px;
+    position: relative;
+
+    &::before {
+        content: "";
+        background-image: url('../img/fondo-contacto2.jpg');
+        background-size: cover;
+        position: absolute;
+        background-position: center;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        opacity: 0.6;
+        border: 2px solid rgb(255, 255, 255);
+        border-radius: 5px;
+    }
+}
+
+.formDiv {
+    position: relative;
+
+    /*     border: 1px solid red; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+
+    label {
+        position: relative;
+
+        /*     border: 1px solid red; */
+        border-radius: 3px;
+        height: 34px;
+        width: 180px;
+        padding-left: 7px;
+        padding-top: 5px;
+        flex-grow: 1;
+        font-size: 16px;
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+        background-color: rgb(255, 255, 255, 0.2);
+
+        &::before {
+            content: "";
+            background-color: rgb(255, 255, 255);
+            background-size: cover;
+            position: absolute;
+            background-position: center;
+            border-radius: 3px;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            opacity: 0.2;
+        }
+    }
+
+    input {
+        /*     border: 1px solid red; */
+        border: none;
+        border-radius: 3px;
+        height: 35px;
+        width: 350px;
+        padding-left: 7px;
+        flex-grow: 1;
+        font-size: 16px;
+    }
+
+    textarea {
+        /*     border: 1px solid red; */
+        border-radius: 5px;
+        max-width: 600px;
+        min-height: 150px;
+        padding: 7px;
+        flex-grow: 1;
+        font-size: 16px;
+    }
+}
+
+.formBotton {
+    position: relative;
+
+    /*     border: 1px solid red; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 20px;
+
+    button {
+        border: 2px solid rgb(255, 255, 255);
+        height: 35px;
+        width: 120px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+}
+
+.borrarButton {
+    background-color: rgb(127, 30, 30);
+    color: aliceblue;
+    border-radius: 5px;
+}
+
+.enviarButton {
+    background-color: rgb(14, 15, 50);
+    color: aliceblue;
+    border-radius: 5px;
+}

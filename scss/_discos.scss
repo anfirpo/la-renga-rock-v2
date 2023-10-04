@@ -1,0 +1,56 @@
+/*******************************************************************/
+/*************************   DISCOS.HTML   *************************/
+/*******************************************************************/
+
+.discoHover:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    transition: .6s;
+}
+
+.discosMargin {
+    @include marginBottom(5px);
+    cursor: pointer;
+}
+
+.discosBold {
+    @include boldText;
+}
+
+.discosItalic {
+    @include italicText;
+}
+
+/* Setlist Modal */
+
+.discosModalHeader {
+    background-color: rgb(137, 152, 177);
+
+    h2 {
+        font-weight: bold;
+        font-size: large;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+}
+
+.discosModalBody {
+    background-color: rgb(240, 240, 245);
+    max-height: 500px;
+
+    ol {
+        li {
+            font-size: large;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-style: italic;
+        }
+    }
+}
+
+.discosModalFooter {
+    background-color: rgb(202, 209, 222);
+
+    button {
+        font-size: large;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+}
