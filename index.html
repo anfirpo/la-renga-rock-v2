@@ -19,7 +19,7 @@
 
 <body>
 
-    <header class="navbar navbar-expand-lg bg-dark sticky-top text-uppercase" data-bs-theme="dark">
+    <header class="navbar navbar-expand-lg bg-dark fixed-top text-uppercase" data-bs-theme="dark">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -54,14 +54,14 @@
     </header>
 
     <main>
-        <section id="section-inicio">
+        <section id="section-inicio" class="sectionTop">
             <iframe src="https://www.youtube.com/embed/MvMS45FiQOs?si=7HyXQl8c--RMLf3J" title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen class="video"></iframe>
         </section>
 
-        <section id="section-ultimo-disco">
+        <section id="section-ultimo-disco" class="sectionTop">
             <h1> ÚLTIMO DISCO </h1>
             <div class="container-fluid row pt-2 pb-5">
                 <img class="img-fluid col-xl-6 col-md-12" src="../img/ultimo-disco/ultimo-disco.jpg"
@@ -103,7 +103,7 @@
             </div>
         </section>
 
-        <section id="section-proximos-shows">
+        <section id="section-proximos-shows" class="sectionTop">
             <h1> PRÓXIMOS SHOWS </h1>
             <h3> Gira "Alejado de la red" </h3>
 
@@ -209,7 +209,7 @@
             </section>
         </section>
 
-        <section id="section-discografia">
+        <section id="section-discografia" class="sectionTop">
             <h1> DISCOGRAFÍA </h1>
 
             <!-- Esquivando Charcos Card -->
@@ -427,8 +427,9 @@
 
                 <!-- Detonador De Sueños Card -->
                 <figure class="col-xl-4 col-md-6 col-sm-12 discoHover my-3">
-                    <img class="img-fluid object-fit-cover discosMargin" src="../img/discos/detonador-de-sueños.jpg"
-                        alt="Disco Detonador De Sueños" data-bs-toggle="modal" data-bs-target="#detonadorDeSueñosModal">
+                    <img class="img-fluid object-fit-cover discosMargin" src="../img/discos/detonador-de-suenios.jpg"
+                        alt="Disco Detonador De Sueños" data-bs-toggle="modal"
+                        data-bs-target="#detonadorDeSueniosModal">
                     <figcaption>
                         <div class="discosItalic discosBold">DETONADOR DE SUEÑOS</div>
                         <div class="discosItalic">2003</div>
@@ -436,7 +437,7 @@
                 </figure>
 
                 <!-- Detonador De Sueños Modal -->
-                <div class="modal fade" id="detonadorDeSueñosModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="detonadorDeSueniosModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
@@ -827,7 +828,7 @@
             </section>
         </section>
 
-        <section id="section-biografia">
+        <section id="section-biografia" class="sectionTop">
             <h1> BIOGRAFÍA </h1>
             <img class="img-fluid banner" src="../img/banner.jpg" alt="Banner La Renga">
             <div class="container-fluid my-3">
@@ -1023,15 +1024,11 @@
             </div>
         </section>
 
-        <section id="section-contacto">
+        <section id="section-contacto" class="sectionTop">
             <h1> CONTACTO </h1>
             <h3> Suscribite para más noticias al instante </h3>
 
-            <!-- *************************************************** -->
-            <!-- ***** Si hubiese querido hacer el Form con BS ***** -->
-            <!-- *************************************************** -->
-
-            <!-- <form class="container-fluid mb-3 col-md-6 col-sm-12 my-4">
+            <form class="container-fluid mb-3 col-md-6 col-sm-12 my-4">
                 <div class="mb-3 formBold">
                     <label for="nombre" class="form-label">Nombre</label>
                     <input type="text" id="nombre" placeholder="Ej. Juan" required class="form-control">
@@ -1057,35 +1054,7 @@
                     <button type="reset" value="Borrar" class="btn btn-danger mt-2 mb-5 buttonFont">Borrar</button>
                     <button type="submit" value="Enviar" class="btn btn-primary mt-2 mb-5 buttonFont">Enviar</button>
                 </div>
-            </form> -->
-
-            <div class="contactoFlexContainer">
-                <form class="formContacto">
-                    <div class="formDiv">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" id="nombre" placeholder="Ej. Juan" required>
-                    </div>
-                    <div class="formDiv">
-                        <label for="apellido">Apellido</label>
-                        <input type="text" id="apellido" placeholder="Ej. Lopez" required>
-                    </div>
-                    <div class="formDiv">
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" id="email" placeholder="Ej. juan@lopez.com" required>
-                    </div>
-                    <div class="formDiv">
-                        <label for="telefono">Teléfono</label>
-                        <input type="tel" id="telefono" placeholder="Ej. 1123456789" required>
-                    </div>
-                    <div class="formDiv">
-                        <textarea placeholder="¡Dejanos tu comentario!" id="floatingTextarea"></textarea>
-                    </div>
-                    <div class="formBotton">
-                        <button type="reset" value="Borrar" class="borrarButton">Borrar</button>
-                        <button type="submit" value="Enviar" class="enviarButton">Enviar</button>
-                    </div>
-                </form>
-            </div>
+            </form>
         </section>
     </main>
 
