@@ -2,6 +2,15 @@
 /***********************   BIOGRAFIA.HTML   ************************/
 /*******************************************************************/
 
+.bgBiografia {
+    background-color: rgb(14, 15, 50);
+
+    h2 {
+        color: rgb(14, 15, 50);
+        background: linear-gradient(90deg, rgb(14, 15, 50), bisque, bisque, rgb(14, 15, 50));
+    }
+}
+
 .banner {
     min-width: 100%;
     min-height: 50px;
@@ -9,4 +18,5 @@
 
 .biografiaParrafo {
     @include justifyText;
+    color: aliceblue;
 }

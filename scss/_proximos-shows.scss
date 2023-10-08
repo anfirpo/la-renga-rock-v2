@@ -2,10 +2,28 @@
 /*********************   PROXIMOS-SHOWS.HTML   *********************/
 /*******************************************************************/
 
+.bgShows {
+    background-color: rgb(14, 15, 50);
+
+    h2 {
+        color: rgb(14, 15, 50);
+        background: linear-gradient(90deg, rgb(14, 15, 50), bisque, bisque, rgb(14, 15, 50));
+    }
+
+    h3 {
+        color: rgb(14, 15, 50);
+        background: linear-gradient(90deg, rgb(145, 148, 252), bisque, bisque, rgb(145, 148, 252));
+    }
+
+    button {
+        background-color: rgb(255, 208, 150);
+        font-weight: bold;
+    }
+}
+
 .bgDegrade {
     border-top: 2px solid rgb(14, 15, 50);
-    background: linear-gradient(180deg, rgba(145, 148, 252, 0.566) 80%, bisque);
-    z-index: 1;
+    background: linear-gradient(180deg, rgb(145, 148, 252) 90%, rgb(14, 15, 50));
 }
 
 .proximosShowsBold {

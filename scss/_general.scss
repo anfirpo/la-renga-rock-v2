@@ -34,11 +34,13 @@ body {
 
 /* MAIN */
 
-.sectionTop {
+.sectionPadding {
     padding-top: 73px;
+    padding-bottom: 73px;
+    border: solid 10px rgb(14, 15, 50);
 }
 
-h1 {
+h2 {
     background: $title-bg;
     color: $title-color;
     text-align: $title-align;

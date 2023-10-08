@@ -46,11 +46,13 @@ body::before {
 }
 
 /* MAIN */
-.sectionTop {
+.sectionPadding {
   padding-top: 73px;
+  padding-bottom: 73px;
+  border: solid 10px rgb(14, 15, 50);
 }
 
-h1 {
+h2 {
   background: linear-gradient(90deg, bisque, rgb(14, 15, 50), rgb(14, 15, 50), bisque);
   color: aliceblue;
   text-align: center;
@@ -87,6 +89,13 @@ h3 {
 /*******************************************************************/
 /*************************   INDEX.HTML   **************************/
 /*******************************************************************/
+.sectionIndex {
+  padding-top: 73px;
+  border: solid rgb(14, 15, 50);
+  border-width: 0px 10px 0px 10px;
+  background-color: rgb(14, 15, 50);
+}
+
 .video {
   width: 100%;
   height: 95vh;
@@ -111,10 +120,25 @@ h3 {
 /*******************************************************************/
 /*********************   PROXIMOS-SHOWS.HTML   *********************/
 /*******************************************************************/
+.bgShows {
+  background-color: rgb(14, 15, 50);
+}
+.bgShows h2 {
+  color: rgb(14, 15, 50);
+  background: linear-gradient(90deg, rgb(14, 15, 50), bisque, bisque, rgb(14, 15, 50));
+}
+.bgShows h3 {
+  color: rgb(14, 15, 50);
+  background: linear-gradient(90deg, rgb(145, 148, 252), bisque, bisque, rgb(145, 148, 252));
+}
+.bgShows button {
+  background-color: rgb(255, 208, 150);
+  font-weight: bold;
+}
+
 .bgDegrade {
   border-top: 2px solid rgb(14, 15, 50);
-  background: linear-gradient(180deg, rgba(145, 148, 252, 0.566) 80%, bisque);
-  z-index: 1;
+  background: linear-gradient(180deg, rgb(145, 148, 252) 90%, rgb(14, 15, 50));
 }
 
 .proximosShowsBold {
@@ -196,6 +220,14 @@ h3 {
 /*******************************************************************/
 /***********************   BIOGRAFIA.HTML   ************************/
 /*******************************************************************/
+.bgBiografia {
+  background-color: rgb(14, 15, 50);
+}
+.bgBiografia h2 {
+  color: rgb(14, 15, 50);
+  background: linear-gradient(90deg, rgb(14, 15, 50), bisque, bisque, rgb(14, 15, 50));
+}
+
 .banner {
   min-width: 100%;
   min-height: 50px;
@@ -204,6 +236,7 @@ h3 {
 .biografiaParrafo {
   text-align: justify;
   line-height: 30px;
+  color: aliceblue;
 }
 
 /*******************************************************************/
