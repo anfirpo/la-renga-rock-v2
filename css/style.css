@@ -131,7 +131,7 @@ h3 {
   color: rgb(14, 15, 50);
   background: linear-gradient(90deg, rgb(145, 148, 252), bisque, bisque, rgb(145, 148, 252));
 }
-.bgShows button {
+.bgShows a {
   background-color: rgb(255, 208, 150);
   font-weight: bold;
 }
@@ -193,7 +193,7 @@ h3 {
 .discosModalHeader {
   background-color: rgb(137, 152, 177);
 }
-.discosModalHeader h2 {
+.discosModalHeader h4 {
   font-weight: bold;
   font-size: large;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
