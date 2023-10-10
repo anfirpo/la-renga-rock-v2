@@ -1,16 +1,16 @@
 /* CIERRO EL NAVBAR-TOGGLER UNA VEZ ELEGIDA UNA OPCIÓN DEL NAVBAR */
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Obtén una referencia al botón del Navbar que activa la funcionalidad de colapso
+    // Obtengo una referencia al botón del Navbar que activa la funcionalidad de colapso
     var navbarToggler = document.querySelector('.navbar-toggler');
 
-    // Obtén una referencia a la barra de navegación (Navbar)
+    // Obtengo una referencia a la barra de navegación (Navbar)
     var navbarCollapse = document.querySelector('.navbar-collapse');
 
-    // Obtén una lista de todos los elementos de enlace (links) dentro del Navbar
+    // Obtengo una lista de todos los elementos de enlace (links) dentro del Navbar
     var navLinks = document.querySelectorAll('.nav-link');
 
-    // Añade un event listener a cada enlace para cerrar el Navbar después de hacer clic
+    // Añado un event listener a cada enlace para cerrar el Navbar después de hacer clic
     navLinks.forEach(function (navLink) {
         navLink.addEventListener('click', function () {
             // Verifica si el Navbar está colapsado o no
