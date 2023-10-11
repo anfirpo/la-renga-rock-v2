@@ -2,13 +2,13 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     // Obtengo una referencia al botón del Navbar que activa la funcionalidad de colapso
-    var navbarToggler = document.querySelector('.navbar-toggler');
+    let navbarToggler = document.querySelector('.navbar-toggler');
 
     // Obtengo una referencia a la barra de navegación (Navbar)
-    var navbarCollapse = document.querySelector('.navbar-collapse');
+    let navbarCollapse = document.querySelector('.navbar-collapse');
 
     // Obtengo una lista de todos los elementos de enlace (links) dentro del Navbar
-    var navLinks = document.querySelectorAll('.nav-link');
+    let navLinks = document.querySelectorAll('.nav-link');
 
     // Añado un event listener a cada enlace para cerrar el Navbar después de hacer clic
     navLinks.forEach(function (navLink) {
