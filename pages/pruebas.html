@@ -17,21 +17,21 @@
 <body>
 
     <!-- FORM DE REGISTRO -->
-    <form id="formRegistro">
+    <form id="registrationForm">
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1">
+            <label for="userEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="userEmail" required>
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <label for="userPass" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="userPass" required>
         </div>
         <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Acepto Términos y Condiciones del servicio</label>
+            <input type="checkbox" class="form-check-input" id="tycFormCheck" required>
+            <label class="form-check-label" for="tycFormCheck">Acepto Términos y Condiciones del servicio</label>
         </div>
         <button type="submit" class="btn btn-primary" data-bs-toggle="collapse" href="#dropdownFechas" role="button"
-            aria-expanded="false" aria-controls="dropdownFechas">Registrarse</button>
+            aria-expanded="false" aria-controls="dropdownFechas" id="registrationButton" disabled>Registrarse</button>
     </form>
 
     <!-- DROPDOWN DE FECHAS -->
