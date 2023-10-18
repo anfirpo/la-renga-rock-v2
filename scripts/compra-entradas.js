@@ -1,10 +1,12 @@
-/* Crear el Array en JavaScript: */
-let opciones = ["Opción 1", "Opción 2", "Opción 3", "Opción 4"];
+/* Crear los Arrays en JavaScript: */
+let fechas = ["AGO 26 - BUENOS AIRES, ARGENTINA - ESTADIO TOMÁS ADOLFO DUCÓ", "SEP 12 - CÓRDOBA, ARGENTINA - ESTADIO MARIO ALBERTO KEMPES", "SEP 24 - MENDOZA, ARGENTINA - ESTADIO MALVINAS ARGENTINAS", "OCT 26 - TIERRA DEL FUEGO, ARGENTINA - HANGAR DEL VIEJO AEROPUERTO", "NOV 6 - BUENOS AIRES, ARGENTINA - ESTADIO LIBERTADORES DE AMÉRICA"];
+
+let sectores = ["PLATEA ALTA", "PLATEA BAJA", "POPULAR", "CAMPO", "CAMPO VIP"]
 
 /* Llenar el Dropdown con JavaScript: */
-let dropdown = document.getElementById("myDropdown");
+let dropdownFechas = document.getElementById("dropdownMenuFechas");
 
-opciones.forEach(function (opcion) {
+fechas.forEach(function (opcion) {
     let elemento = document.createElement("a");
     elemento.classList.add("dropdown-item");
     elemento.textContent = opcion;
@@ -14,5 +16,18 @@ opciones.forEach(function (opcion) {
         console.log("Valor seleccionado:", valorSeleccionado);
         // Aquí puedes realizar acciones con el valor seleccionado
     });
-    dropdown.appendChild(elemento);
+    dropdownFechas.appendChild(elemento);
+});
+
+sectores.forEach(function (sector) {
+    let elemento = document.createElement("a");
+    elemento.classList.add("dropdown-item");
+    elemento.textContent = sector;
+    elemento.href = "#"; // Puedes asignar un enlace aquí si es necesario
+    elemento.addEventListener("click", function () {
+        valorSeleccionado = sector;
+        console.log("Valor seleccionado:", valorSeleccionado);
+        // Aquí puedes realizar acciones con el valor seleccionado
+    });
+    dropdownSectores.appendChild(elemento);
 });
