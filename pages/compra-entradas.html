@@ -17,6 +17,8 @@
 <body>
     <h1>Recitales</h1>
 
+    <br>
+
     <!-- DROPDOWN DE FECHAS -->
     <div class="dropdown" id="dropdownFechas">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownFechasButton"
@@ -27,6 +29,10 @@
             <!-- Aquí se llenará con opciones usando JavaScript -->
         </div>
     </div>
+
+    <input type="text" class="form-control collapse" id="fechaRecital" disabled>
+
+    <br>
 
     <!-- DROPDOWN DE SECTORES -->
     <div class="dropdown collapse" id="dropdownSectores">
@@ -39,6 +45,10 @@
         </div>
     </div>
 
+    <input type="text" class="form-control collapse" id="sectorRecital" disabled>
+
+    <br>
+
     <!-- DROPDOWN DE CANTIDAD DE ENTRADAS -->
     <div class="dropdown collapse" id="dropdownCantidad">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCantidadButton"
@@ -48,6 +58,19 @@
         <div class="dropdown-menu" aria-labelledby="dropdownCantidadButton" id="dropdownMenuCantidad">
             <!-- Aquí se llenará con opciones usando JavaScript -->
         </div>
+    </div>
+
+    <input type="number" class="form-control collapse" id="entradasRecital" disabled>
+
+    <br>
+
+    <!-- BOTONES DE DECISIÓN -->
+    <div class="d-flex justify-content-evenly">
+        <button type="reset" value="Borrar" class="btn btn-danger mt-2 mb-5 buttonFont">Descartar selección</button>
+        <button type="submit" value="Enviar" class="btn btn-primary mt-2 mb-5 buttonFont">Agregar al carrito y seguir
+            comprando</button>
+        <button type="submit" value="Enviar" class="btn btn-success mt-2 mb-5 buttonFont">Agregar al carrito y finalizar
+            compra</button>
     </div>
 
     <!-- BS SCRIPT -->
