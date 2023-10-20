@@ -64,12 +64,24 @@
 
     <br>
 
+    <!-- PRECIO TOTAL DE LA SELECCIÓN -->
+    <div class="d-flex justify-content-evenly">
+        <input type="text" class="form-control text-center mx-3 collapse" value="TOTAL A PAGAR ($ARS)"
+            id="totalRecitalTexto" disabled>
+        <input type="number" class="form-control mx-3 text-center collapse" id="totalRecitalValor" disabled>
+    </div>
+
+    <br>
+
     <!-- BOTONES DE DECISIÓN -->
     <div class="d-flex justify-content-evenly">
-        <button type="reset" value="Borrar" class="btn btn-danger mt-2 mb-5 buttonFont">Descartar selección</button>
-        <button type="submit" value="Enviar" class="btn btn-primary mt-2 mb-5 buttonFont">Agregar al carrito y seguir
+        <button type="reset" value="Borrar" class="btn btn-danger mt-2 mb-5 buttonFont"
+            id="botonDescartarCompra">Descartar selección</button>
+        <button type="submit" value="Enviar" class="btn btn-primary mt-2 mb-5 buttonFont"
+            id="botonAgregarCompra">Agregar al carrito y seguir
             comprando</button>
-        <button type="submit" value="Enviar" class="btn btn-success mt-2 mb-5 buttonFont">Agregar al carrito y finalizar
+        <button type="submit" value="Enviar" class="btn btn-success mt-2 mb-5 buttonFont"
+            id="botonFinalizarCompra">Agregar al carrito y finalizar
             compra</button>
     </div>
 
