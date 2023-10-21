@@ -29,13 +29,22 @@ let totalRecitalTexto = document.getElementById("totalRecitalTexto")
 let totalRecitalValor = document.getElementById("totalRecitalValor")
 totalRecitalValor.value = 0
 
-/* Creo la clase constructora "Seleccion" */
+/* Creo la clase constructora "Seleccion" e inicializo el array "carritoCompra" */
+let carritoCompra = []
+
 class Seleccion {
     constructor(codigo, fecha, sector, cantidad) {
-        this.codigo = codigo;
-        this.fecha = fecha;
-        this.sector = sector;
-        this.cantidad = cantidad;
+        this.codigo = parseInt(codigo)
+        this.fecha = fecha
+        this.sector = sector
+        this.cantidad = cantidad
+    }
+
+    queSoy() {
+        console.log(typeof this.codigo)
+        console.log(typeof this.fecha)
+        console.log(typeof this.sector)
+        console.log(typeof this.cantidad)
     }
 }
 
@@ -46,6 +55,7 @@ let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
 
 /* Declaro las siguientes variables para que sean globales */
 let sectorPrecio = 0
+let ordenDeCompra = 0
 
 /* Llenar el Dropdown de fechas con JavaScript: */
 fechas.forEach(function (fecha) {
@@ -85,6 +95,9 @@ sectores.forEach(function (sector) {
         sectorPrecio = parseInt(sectorSplit[1])
         console.log("Precio a pagar por ese sector:", sectorPrecio)
 
+        /* Hago la cuenta del total de compra de esta selección. Esta sentencia la tengo que escribir acá ya que, en el caso de haber elegido una opción para cada dropdown, si yo quisiera modificar luego un sector, sin modificar la cantidad de entradas a comprar, esta es la forma en que se actualizaría el total */
+        totalRecitalValor.value = entradasRecital.value * sectorPrecio
+
         if (dropdownCantidad.classList.contains("show")) {
         } else {
             sectorRecital.classList.toggle("show")
@@ -104,7 +117,7 @@ cantidad.forEach(function (cant) {
         cantidadElegida = cant
         console.log("Valor seleccionado:", cantidadElegida)
 
-        entradasRecital.value = cant
+        entradasRecital.value = parseInt(cant)
 
         /* Hago la cuenta del total de compra de esta selección */
         totalRecitalValor.value = cant * sectorPrecio
@@ -119,9 +132,8 @@ cantidad.forEach(function (cant) {
     dropdownMenuCantidad.appendChild(elemento)
 })
 
-/* Asigno funciones a los botones */
-botonDescartarCompra.addEventListener("click", function () {
-    console.log("Toqué el botón rojo")
+/* Función que borra los datos seleccionados a la hora de comprar la entrada */
+function limpiarSeleccion() {
     fechaRecital.value = ""
     sectorRecital.value = ""
     entradasRecital.value = 0
@@ -149,13 +161,43 @@ botonDescartarCompra.addEventListener("click", function () {
     } else {
         console.log("No hay algún dropdown abierto")
     }
+}
 
+/* Asigno funciones a los botones */
+botonDescartarCompra.addEventListener("click", function () {
+    console.log("Toqué el botón rojo")
+
+    limpiarSeleccion()
 })
 
 botonAgregarCompra.addEventListener("click", function () {
     console.log("Toqué el botón azul")
+
+    if (totalRecitalValor.classList.contains("show")) {
+        ordenDeCompra++
+        console.log(ordenDeCompra)
+
+        carritoCompra.push(new Seleccion(ordenDeCompra, fechaRecital.value, sectorRecital.value, entradasRecital.value))
+        console.log(carritoCompra)
+
+        limpiarSeleccion()
+    } else {
+        alert("Aún quedan campos sin seleccionar")
+    }
 })
 
 botonFinalizarCompra.addEventListener("click", function () {
     console.log("Toqué el botón verde")
+
+    if (totalRecitalValor.classList.contains("show")) {
+        ordenDeCompra++
+        console.log(ordenDeCompra)
+
+        carritoCompra.push(new Seleccion(ordenDeCompra, fechaRecital.value, sectorRecital.value, entradasRecital.value))
+        console.log(carritoCompra)
+
+        limpiarSeleccion()
+    } else {
+        alert("Aún quedan campos sin seleccionar")
+    }
 })
