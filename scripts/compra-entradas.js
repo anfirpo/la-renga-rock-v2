@@ -48,6 +48,7 @@ let botonAgregarCompra = document.getElementById("botonAgregarCompra")
 let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
 
 /* Declaro las siguientes variables para que sean globales */
+let sectorLugar = ""
 let sectorPrecio = 0
 let ordenDeCompra = 0
 
@@ -58,8 +59,6 @@ fechas.forEach(function (fecha) {
     elemento.textContent = fecha
     elemento.href = "#"
     elemento.addEventListener("click", function () {
-        fechaElegida = fecha
-        console.log("Valor seleccionado:", fechaElegida)
 
         fechaRecital.value = fecha
 
@@ -79,14 +78,15 @@ sectores.forEach(function (sector) {
     elemento.textContent = sector
     elemento.href = "#"
     elemento.addEventListener("click", function () {
-        sectorElegido = sector
-        console.log("Valor seleccionado:", sectorElegido)
 
         sectorRecital.value = sector
 
-        let sectorSplit = sector.split("$")
+        let sectorSplitPrecio = sector.split("$")
+        let sectorSplitLugar = sector.split(" -")
 
-        sectorPrecio = parseInt(sectorSplit[1])
+        sectorLugar = sectorSplitLugar[0]
+        console.log("Lugar:", sectorLugar)
+        sectorPrecio = parseInt(sectorSplitPrecio[1])
         console.log("Precio a pagar por ese sector:", sectorPrecio)
 
         /* Hago la cuenta del total de compra de esta selección. Esta sentencia la tengo que escribir acá ya que, en el caso de haber elegido una opción para cada dropdown, si yo quisiera modificar luego un sector, sin modificar la cantidad de entradas a comprar, esta es la forma en que se actualizaría el total */
@@ -108,8 +108,6 @@ cantidad.forEach(function (cant) {
     elemento.textContent = cant
     elemento.href = "#"
     elemento.addEventListener("click", function () {
-        cantidadElegida = cant
-        console.log("Valor seleccionado:", cantidadElegida)
 
         entradasRecital.value = parseInt(cant)
 
@@ -159,20 +157,16 @@ function limpiarSeleccion() {
 
 /* Asigno funciones a los botones */
 botonDescartarCompra.addEventListener("click", function () {
-    console.log("Toqué el botón rojo")
 
     limpiarSeleccion()
 })
 
 botonAgregarCompra.addEventListener("click", function () {
-    console.log("Toqué el botón azul")
 
     if (totalRecitalValor.classList.contains("show")) {
         ordenDeCompra++
-        console.log(ordenDeCompra)
 
-        carritoCompra.push(new Seleccion(ordenDeCompra, fechaRecital.value, sectorRecital.value, entradasRecital.value))
-        console.log(carritoCompra)
+        carritoCompra.push(new Seleccion(ordenDeCompra, fechaRecital.value, sectorLugar, sectorPrecio, entradasRecital.value))
 
         limpiarSeleccion()
     } else {
@@ -181,7 +175,6 @@ botonAgregarCompra.addEventListener("click", function () {
 })
 
 botonFinalizarCompra.addEventListener("click", function () {
-    console.log("Toqué el botón verde")
 
-    window.location.href = "compra-carrito.html"
+    window.location.href = "compra-carrito-pago.html"
 })
