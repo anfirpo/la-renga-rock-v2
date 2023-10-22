@@ -33,18 +33,12 @@ totalRecitalValor.value = 0
 let carritoCompra = []
 
 class Seleccion {
-    constructor(codigo, fecha, sector, cantidad) {
+    constructor(codigo, fecha, sector, precioUnitario, cantidad) {
         this.codigo = parseInt(codigo)
         this.fecha = fecha
         this.sector = sector
+        this.preciounitario = precioUnitario
         this.cantidad = cantidad
-    }
-
-    queSoy() {
-        console.log(typeof this.codigo)
-        console.log(typeof this.fecha)
-        console.log(typeof this.sector)
-        console.log(typeof this.cantidad)
     }
 }
 
@@ -189,15 +183,5 @@ botonAgregarCompra.addEventListener("click", function () {
 botonFinalizarCompra.addEventListener("click", function () {
     console.log("Toqué el botón verde")
 
-    if (totalRecitalValor.classList.contains("show")) {
-        ordenDeCompra++
-        console.log(ordenDeCompra)
-
-        carritoCompra.push(new Seleccion(ordenDeCompra, fechaRecital.value, sectorRecital.value, entradasRecital.value))
-        console.log(carritoCompra)
-
-        limpiarSeleccion()
-    } else {
-        alert("Aún quedan campos sin seleccionar")
-    }
+    window.location.href = "compra-carrito.html"
 })
