@@ -178,3 +178,26 @@ botonFinalizarCompra.addEventListener("click", function () {
 
     window.location.href = "compra-carrito-pago.html"
 })
+
+/* ************************************* */
+/* ******** compra-carrito-pago ******** */
+/* ************************************* */
+
+/* Despliego todos los productos agregados al carrito con JavaScript: */
+carritoCompra.forEach(function (producto) {
+    let elemento = document.createElement("a")
+    elemento.classList.add("dropdown-item")
+    elemento.textContent = producto
+    elemento.href = "#"
+    elemento.addEventListener("click", function () {
+
+        fechaRecital.value = producto
+
+        if (dropdownSectores.classList.contains("show")) {
+        } else {
+            fechaRecital.classList.toggle("show")
+            dropdownSectores.classList.toggle("show")
+        }
+    })
+    dropdownMenuFechas.appendChild(elemento)
+})
