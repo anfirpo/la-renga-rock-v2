@@ -183,11 +183,42 @@ botonFinalizarCompra.addEventListener("click", function () {
 /* ******** compra-carrito-pago ******** */
 /* ************************************* */
 
+/* Inicializo variables */
+let carritoProductos = document.getElementById("carritoProductos")
+
 /* Despliego todos los productos agregados al carrito con JavaScript: */
 carritoCompra.forEach(function (producto) {
-    let elemento = document.createElement("a")
-    elemento.classList.add("dropdown-item")
-    elemento.textContent = producto
+    let contenedorPrincipal = document.createElement("div")
+    let header = document.createElement("h4")
+
+    header.classList.add("card-header")
+    carritoProductos.appendChild(contenedorPrincipal)
+
+    let contenedorBody = document.createElement("div")
+    contenedorBody.classList.add("card-body")
+    contenedorPrincipal.appendChild(contenedorBody)
+
+    let sector = document.createElement("h5")
+    sector.classList.add("card-title")
+    contenedorBody.appendChild(sector)
+
+    let precioUnitario = document.createElement("p")
+    precioUnitario.classList.add("card-text")
+    contenedorBody.appendChild(precioUnitario)
+
+    let cantidadEntradas = document.createElement("p")
+    cantidadEntradas.classList.add("card-text")
+    contenedorBody.appendChild(cantidadEntradas)
+
+    let precioTotal = document.createElement("h5")
+    precioTotal.classList.add("card-title")
+    contenedorBody.appendChild(precioTotal)
+
+    let trashCan = document.createElement("i")
+    trashCan.classList.add("fa-regular fa-trash-can")
+    contenedorBody.appendChild(trashCan)
+
+    /* elemento.textContent = producto
     elemento.href = "#"
     elemento.addEventListener("click", function () {
 
@@ -199,5 +230,5 @@ carritoCompra.forEach(function (producto) {
             dropdownSectores.classList.toggle("show")
         }
     })
-    dropdownMenuFechas.appendChild(elemento)
+    dropdownMenuFechas.appendChild(elemento) */
 })
