@@ -39,6 +39,7 @@ class Seleccion {
         this.sector = sector
         this.preciounitario = precioUnitario
         this.cantidad = cantidad
+        this.preciototal = precioUnitario * cantidad
     }
 }
 
@@ -85,9 +86,7 @@ sectores.forEach(function (sector) {
         let sectorSplitLugar = sector.split(" -")
 
         sectorLugar = sectorSplitLugar[0]
-        console.log("Lugar:", sectorLugar)
         sectorPrecio = parseInt(sectorSplitPrecio[1])
-        console.log("Precio a pagar por ese sector:", sectorPrecio)
 
         /* Hago la cuenta del total de compra de esta selección. Esta sentencia la tengo que escribir acá ya que, en el caso de haber elegido una opción para cada dropdown, si yo quisiera modificar luego un sector, sin modificar la cantidad de entradas a comprar, esta es la forma en que se actualizaría el total */
         totalRecitalValor.value = entradasRecital.value * sectorPrecio

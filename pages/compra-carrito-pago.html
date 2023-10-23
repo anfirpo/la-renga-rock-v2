@@ -31,12 +31,44 @@
             <div id="carritoResumen" class="card-body">
                 <!-- Lo lleno con usando código Javascript -->
                 <br>
-                <p class="card-text">Subtotal</p>
-                <p class="card-text">Costo del servicio</p>
+                <p id="SubtotalResumen" class="card-text">Subtotal</p>
+                <p id="costoServicioResumen" class="card-text">Costo del servicio</p>
             </div>
-            <h4 class="card-footer">Total</h4>
-            <a href="#" class="btn btn-primary">Ir al pago</a>
+            <h4 id="totalResumen" class="card-footer">Total</h4>
+            <a id="irAlPago" href="#formPagoEntradas" class="btn btn-primary">Ir al pago</a>
         </div>
+    </div>
+
+    <div id="formPagoEntradas" class="collapse">
+        <h2>Método y proceso de pago</h2>
+
+        <form class="container-fluid mb-3 col-md-6 col-sm-12 my-4">
+            <div class="mb-3 formBold">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" id="nombre" placeholder="Ej. Juan" required class="form-control">
+            </div>
+            <div class="mb-3 formBold">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" id="apellido" placeholder="Ej. Lopez" required class="form-control">
+            </div>
+            <div class="mb-3 formBold">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" id="email" placeholder="Ej. juan@lopez.com" required class="form-control">
+            </div>
+            <div class="mb-3 formBold">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="tel" id="telefono" placeholder="Ej. 1123456789" required class="form-control">
+            </div>
+            <div class="form-floating">
+                <textarea class="form-control my-4" placeholder="Leave a comment here" id="floatingTextarea"
+                    style="height: 150px"></textarea>
+                <label for="floatingTextarea">¡Dejanos tu comentario!</label>
+            </div>
+            <div class="d-flex justify-content-evenly">
+                <button type="reset" value="Borrar" class="btn btn-danger mt-2 mb-5 buttonFont">Borrar</button>
+                <button type="submit" value="Enviar" class="btn btn-primary mt-2 mb-5 buttonFont">Enviar</button>
+            </div>
+        </form>
     </div>
 
     <!-- BS SCRIPT -->

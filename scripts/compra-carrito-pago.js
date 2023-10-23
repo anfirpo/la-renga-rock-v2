@@ -5,10 +5,15 @@
 /* Inicializo variables */
 let carritoProductos = document.getElementById("carritoProductos")
 let carritoResumen = document.getElementById("carritoResumen")
+let SubtotalResumen = document.getElementById("SubtotalResumen")
+let costoServicioResumen = document.getElementById("costoServicioResumen")
+let totalResumen = document.getElementById("totalResumen")
+let irAlPago = document.getElementById("irAlPago")
+let formPagoEntradas = document.getElementById("formPagoEntradas")
 
 /* Despliego todos los productos agregados al carrito con JavaScript: */
 
-let carritoCompra = [{ codigo: 1, fecha: 'SEP 24 - MENDOZA, ARGENTINA - ESTADIO MALVINAS ARGENTINAS', sector: 'PLATEA BAJA', preciounitario: 20000, cantidad: '4' }, { codigo: 2, fecha: 'SEP 12 - CÓRDOBA, ARGENTINA - ESTADIO MARIO ALBERTO KEMPES', sector: 'CAMPO VIP', preciounitario: 25000, cantidad: '1' }, { codigo: 3, fecha: 'AGO 26 - BUENOS AIRES, ARGENTINA - ESTADIO TOMÁS ADOLFO DUCÓ', sector: 'POPULAR', preciounitario: 10000, cantidad: '4' }]
+let carritoCompra = [{ codigo: 1, fecha: 'SEP 24 - MENDOZA, ARGENTINA - ESTADIO MALVINAS ARGENTINAS', sector: 'PLATEA BAJA', preciounitario: 20000, cantidad: '4', preciototal: 80000 }, { codigo: 2, fecha: 'SEP 12 - CÓRDOBA, ARGENTINA - ESTADIO MARIO ALBERTO KEMPES', sector: 'CAMPO VIP', preciounitario: 25000, cantidad: '1', preciototal: 25000 }, { codigo: 3, fecha: 'AGO 26 - BUENOS AIRES, ARGENTINA - ESTADIO TOMÁS ADOLFO DUCÓ', sector: 'POPULAR', preciounitario: 10000, cantidad: '4', preciototal: 40000 }]
 
 carritoCompra.forEach(function (seleccion) {
 
@@ -46,10 +51,10 @@ carritoCompra.forEach(function (seleccion) {
     cantidadEntradas.textContent = "Cantidad: " + seleccion.cantidad + " entradas"
     contenedorBody.appendChild(cantidadEntradas)
 
-    let precioTotal = document.createElement("h5")
-    precioTotal.classList.add("card-title")
-    precioTotal.textContent = "$" + parseInt(seleccion.preciounitario) * parseInt(seleccion.cantidad)
-    contenedorBody.appendChild(precioTotal)
+    let precioParcialSeleccion = document.createElement("h5")
+    precioParcialSeleccion.classList.add("card-title")
+    precioParcialSeleccion.textContent = "$" + parseInt(seleccion.preciounitario) * parseInt(seleccion.cantidad)
+    contenedorBody.appendChild(precioParcialSeleccion)
 
 })
 
@@ -74,3 +79,19 @@ carritoCompra.forEach(function (seleccion) {
 
 /* Calculo Subtotal, coste de servicio, y total: */
 
+let SubtotalResumenValor = carritoCompra.reduce((total, producto) => total + producto.preciototal, 0)
+SubtotalResumen.textContent = "Subtotal: $" + SubtotalResumenValor
+
+let costoServicioResumenValor = parseInt(((SubtotalResumenValor * 3) / 100) * carritoCompra.length)
+costoServicioResumen.textContent = "Costo del servicio: $" + costoServicioResumenValor
+
+totalResumen.textContent = "Total: $" + (SubtotalResumenValor + costoServicioResumenValor)
+
+/* Listener para ir al método y procesamiento de pago: */
+irAlPago.addEventListener("click", function () {
+
+    if (formPagoEntradas.classList.contains("show")) {
+    } else {
+        formPagoEntradas.classList.toggle("show")
+    }
+})
