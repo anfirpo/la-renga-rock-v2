@@ -33,6 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
     /* Uso el listener para decirle al botón a qué página quiero que me redirija */
     jsLoginButton.addEventListener("click", function () {
         window.location.href = "compra-entradas.html"
-    });
+    })
 
-});
+})

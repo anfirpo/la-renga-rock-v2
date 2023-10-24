@@ -2,14 +2,22 @@
 /* ******** compra-carrito-pago ******** */
 /* ************************************* */
 
-/* Inicializo variables */
+/* Inicializo variables parte del carrito */
 let carritoProductos = document.getElementById("carritoProductos")
 let carritoResumen = document.getElementById("carritoResumen")
 let SubtotalResumen = document.getElementById("SubtotalResumen")
 let costoServicioResumen = document.getElementById("costoServicioResumen")
 let totalResumen = document.getElementById("totalResumen")
 let irAlPago = document.getElementById("irAlPago")
+
+/* Inicializo variables parte del pago */
 let formPagoEntradas = document.getElementById("formPagoEntradas")
+let numeroTarjeta = document.getElementById("numeroTarjeta")
+let nombreTarjeta = document.getElementById("nombreTarjeta")
+let vencimientoTarjeta = document.getElementById("vencimientoTarjeta")
+let codigoTarjeta = document.getElementById("codigoTarjeta")
+let dniTarjeta = document.getElementById("dniTarjeta")
+let comprarButton = document.getElementById("comprarButton")
 
 /* Despliego todos los productos agregados al carrito con JavaScript: */
 
@@ -94,4 +102,27 @@ irAlPago.addEventListener("click", function () {
     } else {
         formPagoEntradas.classList.toggle("show")
     }
+})
+
+/* Chequeo si completé todos los datos de la tarjeta para habilitar el botón */
+function checkInputs() {
+    if (numeroTarjeta.value.trim() !== "" && nombreTarjeta.value.trim() !== "" && vencimientoTarjeta.value.trim() !== "" && codigoTarjeta.value.trim() !== "" && dniTarjeta.value.trim() !== "") {
+        comprarButton.removeAttribute("disabled")
+    } else {
+        comprarButton.setAttribute("disabled", "true")
+    }
+}
+
+/* Uso el listener para ir avisando qué datos voy completando */
+numeroTarjeta.addEventListener("input", checkInputs)
+nombreTarjeta.addEventListener("input", checkInputs)
+vencimientoTarjeta.addEventListener("input", checkInputs)
+codigoTarjeta.addEventListener("input", checkInputs)
+dniTarjeta.addEventListener("input", checkInputs)
+
+/* Uso el listener para decirle al botón a qué página quiero que me redirija */
+comprarButton.addEventListener("click", function () {
+    console.log("toco boton")
+    window.location.href = "compra-exitosa.html"
+    console.log("toco boton bis")
 })
