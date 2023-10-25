@@ -40,34 +40,33 @@
     </div>
 
     <div id="formPagoEntradas" class="collapse">
+
         <h2>Método y proceso de pago</h2>
 
         <form class="container-fluid mb-3 col-md-6 col-sm-12 my-4">
             <div class="mb-3 formBold">
                 <label for="numeroTarjeta" class="form-label">Número de la tarjeta</label>
-                <input type="text" id="numeroTarjeta" required class="form-control">
+                <input type="text" id="numeroTarjeta" class="form-control" required>
             </div>
             <div class="mb-3 formBold">
                 <label for="nombreTarjeta" class="form-label">Nombre que figura en la tarjeta</label>
-                <input type="text" id="nombreTarjeta" required class="form-control">
+                <input type="text" id="nombreTarjeta" class="form-control" required>
             </div>
             <div class="mb-3 formBold">
                 <label for="vencimientoTarjeta" class="form-label">Fecha de vencimiento</label>
-                <input type="text" id="vencimientoTarjeta" required class="form-control">
+                <input type="text" id="vencimientoTarjeta" class="form-control" required>
             </div>
             <div class="mb-3 formBold">
                 <label for="codigoTarjeta" class="form-label">Código de seguridad</label>
-                <input type="text" id="codigoTarjeta" required class="form-control">
+                <input type="text" id="codigoTarjeta" class="form-control" required>
             </div>
             <div class="mb-3 formBold">
                 <label for="dniTarjeta" class="form-label">DNI del titular de la tarjeta</label>
-                <input type="text" id="dniTarjeta" required class="form-control">
+                <input type="text" id="dniTarjeta" class="form-control" required>
             </div>
-            <div class="d-flex justify-content-evenly">
-                <button id="comprarButton" type="submit" value="enviar" role="button" disabled
-                    class="btn btn-primary mt-2 mb-5 buttonFont">Confirmar
-                    compra</button>
-            </div>
+            <button id="comprarButton" type="submit" value="enviar" role="button"
+                class="btn btn-primary mt-2 mb-5 buttonFont" disabled>Confirmar
+                compra</button>
         </form>
     </div>
 

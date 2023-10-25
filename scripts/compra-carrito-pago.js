@@ -124,5 +124,4 @@ dniTarjeta.addEventListener("input", checkInputs)
 comprarButton.addEventListener("click", function () {
     console.log("toco boton")
     window.location.href = "compra-exitosa.html"
-    console.log("toco boton bis")
 })
