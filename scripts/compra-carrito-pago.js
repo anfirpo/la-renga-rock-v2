@@ -105,7 +105,7 @@ irAlPago.addEventListener("click", function () {
 })
 
 /* Chequeo si completé todos los datos de la tarjeta para habilitar el botón */
-function checkInputs() {
+function checkInputsPago() {
     if (numeroTarjeta.value.trim() !== "" && nombreTarjeta.value.trim() !== "" && vencimientoTarjeta.value.trim() !== "" && codigoTarjeta.value.trim() !== "" && dniTarjeta.value.trim() !== "") {
         comprarButton.removeAttribute("disabled")
     } else {
@@ -114,11 +114,11 @@ function checkInputs() {
 }
 
 /* Uso el listener para ir avisando qué datos voy completando */
-numeroTarjeta.addEventListener("input", checkInputs)
-nombreTarjeta.addEventListener("input", checkInputs)
-vencimientoTarjeta.addEventListener("input", checkInputs)
-codigoTarjeta.addEventListener("input", checkInputs)
-dniTarjeta.addEventListener("input", checkInputs)
+numeroTarjeta.addEventListener("input", checkInputsPago)
+nombreTarjeta.addEventListener("input", checkInputsPago)
+vencimientoTarjeta.addEventListener("input", checkInputsPago)
+codigoTarjeta.addEventListener("input", checkInputsPago)
+dniTarjeta.addEventListener("input", checkInputsPago)
 
 /* Uso el listener para decirle al botón a qué página quiero que me redirija */
 comprarButton.addEventListener("click", function () {
