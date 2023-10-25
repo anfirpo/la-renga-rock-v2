@@ -6,19 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <!-- BS CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-    <h1>¡La compra se realizó con éxito!</h1>
+    <header class="navbar navbar-expand-lg bg-dark fixed-top text-uppercase" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand nav-link" href="../index.html"><img src="../img/la-renga.png" alt="Logo de La Renga"
+                    class="logo"></a>
+        </div>
+    </header>
 
-    <br><br>
+    <main class="mainCarrito">
+        <h3>¡La compra se realizó con éxito!</h3>
 
-    <h2>Gracias por confiar en LaRengaRock Oficial. En breve estará recibiendo un mail con la factura de la compra
-        realizada y el e-Ticket que necesita presentar en las puertas del establecimiento para ingresar el día del
-        recital</h2>
+        <h4 class="container-fluid p-3">Gracias por confiar en LaRengaRock Oficial. En breve estarás recibiendo un
+            mail
+            con
+            la factura de la
+            compra
+            realizada y el e-Ticket que necesitas presentar en las puertas del establecimiento para ingresar el día del
+            recital. No olvides llevar un alimento no perecedero para aportar a las donaciones!</h2>
+    </main>
+
+    <footer class="container-fluid d-flex justify-content-center bg-dark fixed-bottom py-2" data-bs-theme="dark">
+        <span class="text-light d-none d-md-block"> ¡El Rock & Roll no morirá jamas! </span>
+    </footer>
 
     <!-- BS SCRIPT -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

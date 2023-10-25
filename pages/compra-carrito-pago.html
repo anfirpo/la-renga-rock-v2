@@ -6,103 +6,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- BS CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
 
     <!-- Scripts js -->
     <script defer src="../scripts/compra-carrito-pago.js"></script>
 </head>
 
 <body>
-    <h1>Carrito de compra</h1>
-
-    <div class="container-fluid row pt-2 pb-5">
-        <div id="carritoProductos" class="card col-xl-8 col-md-7 col-sm-12 d-flex flex-wrap mt-3 mb-5 fs-6">
-            <!-- Lo lleno con usando código Javascript -->
+    <header class="navbar navbar-expand-lg bg-dark fixed-top text-uppercase" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand nav-link" href="../index.html"><img src="../img/la-renga.png" alt="Logo de La Renga"
+                    class="logo"></a>
+            <a class="navbar-brand nav-link" href="compra-carrito-pago.html"><i
+                    class="fa-solid fa-cart-shopping"></i></a>
         </div>
+    </header>
 
-        <div class="card col-xl-4 col-md-5 col-sm-12 d-flex flex-wrap mt-3 mb-5 fs-6">
-            <h4 class="card-header">Resumen de la compra</h4>
-            <div id="carritoResumen" class="card-body">
+    <main class="mainCarrito">
+        <h2>Carrito de compra</h2>
+
+        <div class="container-fluid row pt-2 pb-5">
+            <div id="carritoProductos" class="card col-xl-8 col-md-7 col-sm-12 d-flex flex-wrap mt-3 mb-5 fs-6">
                 <!-- Lo lleno con usando código Javascript -->
-                <br>
-                <p id="subtotalResumen" class="card-text">Subtotal</p>
-                <p id="costoServicioResumen" class="card-text">Costo del servicio</p>
             </div>
-            <h4 id="totalResumen" class="card-footer">Total</h4>
-            <a id="irAlPago" href="#formPagoEntradas" class="btn btn-primary">Ir al pago</a>
+
+            <div class="card col-xl-4 col-md-5 col-sm-12 d-flex flex-wrap mt-3 mb-5 fs-6">
+                <h4 class="card-header">Resumen de la compra</h4>
+                <div id="carritoResumen" class="card-body">
+                    <!-- Lo lleno con usando código Javascript -->
+                    <br>
+                    <p id="subtotalResumen" class="card-text">Subtotal</p>
+                    <p id="costoServicioResumen" class="card-text">Costo del servicio</p>
+                </div>
+                <h4 id="totalResumen" class="card-footer">Total</h4>
+                <a id="irAlPago" href="#formPagoEntradas" class="btn btn-primary">Ir al pago</a>
+            </div>
         </div>
-    </div>
 
-    <div id="formPagoEntradas" class="collapse">
+        <div id="formPagoEntradas" class="collapse">
 
-        <h2>Método y proceso de pago</h2>
+            <h3>Método y proceso de pago</h3>
 
-        <!-- <form id="loginForm">
-            <div class="mb-3">
-                <label for="numeroTarjeta" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="numeroTarjeta" required>
-            </div>
-            <div class="mb-3">
-                <label for="nombreTarjeta" class="form-label">Apellido</label>
-                <input type="text" class="form-control" id="nombreTarjeta" required>
-            </div>
-            <div class="mb-3">
-                <label for="vencimientoTarjeta" class="form-label">Teléfono móvil</label>
-                <input type="number" class="form-control" id="vencimientoTarjeta" required>
-            </div>
-            <div class="mb-3">
-                <label for="codigoTarjeta" class="form-label">Email</label>
-                <input type="number" class="form-control" id="codigoTarjeta" required>
-            </div>
-            <div class="mb-3">
-                <label for="dniTarjeta" class="form-label">Contraseña</label>
-                <input type="text" class="form-control" id="dniTarjeta" required>
-            </div>
-            <button type="submit" value="enviar" class="btn btn-primary" data-bs-toggle="collapse" role="button"
-                aria-expanded="false" aria-controls="dropdownFechas" id="comprarButton" disabled>Registrarse</button>
-        </form> -->
+            <form class="container-fluid mb-3 col-md-6 col-sm-12 my-4">
+                <div class="mb-3 formBold">
+                    <label for="numeroTarjeta" class="form-label">Número de la tarjeta</label>
+                    <input type="text" class="form-control" id="numeroTarjeta" required>
+                </div>
+                <div class="mb-3 formBold">
+                    <label for="nombreTarjeta" class="form-label">Nombre que figura en la tarjeta</label>
+                    <input type="text" class="form-control" id="nombreTarjeta" required>
+                </div>
+                <div class="mb-3 formBold">
+                    <label for="vencimientoTarjeta" class="form-label">Fecha de vencimiento</label>
+                    <input type="text" class="form-control" id="vencimientoTarjeta" required>
+                </div>
+                <div class="mb-3 formBold">
+                    <label for="codigoTarjeta" class="form-label">Código de seguridad</label>
+                    <input type="text" class="form-control" id="codigoTarjeta" required>
+                </div>
+                <div class="mb-3 formBold">
+                    <label for="dniTarjeta" class="form-label">DNI del titular de la tarjeta</label>
+                    <input type="text" class="form-control" id="dniTarjeta" required>
+                </div>
+                <div class="mb-3 formBold">
+                    <label for="confirmarEmail" class="form-label">Confirmar Email</label>
+                    <input type="email" class="form-control" id="confirmarEmail" required>
+                </div>
+                <div class="d-flex justify-content-center"><button type="submit" value="enviar" class="btn btn-primary"
+                        role="button" id="comprarButton" disabled>Confirmar compra</button>
+                </div>
 
-        <form class="container-fluid mb-3 col-md-6 col-sm-12 my-4">
-            <div class="mb-3 formBold">
-                <label for="numeroTarjeta" class="form-label">Número de la tarjeta</label>
-                <input type="text" class="form-control" id="numeroTarjeta" required>
-            </div>
-            <div class="mb-3 formBold">
-                <label for="nombreTarjeta" class="form-label">Nombre que figura en la tarjeta</label>
-                <input type="text" class="form-control" id="nombreTarjeta" required>
-            </div>
-            <div class="mb-3 formBold">
-                <label for="vencimientoTarjeta" class="form-label">Fecha de vencimiento</label>
-                <input type="text" class="form-control" id="vencimientoTarjeta" required>
-            </div>
-            <div class="mb-3 formBold">
-                <label for="codigoTarjeta" class="form-label">Código de seguridad</label>
-                <input type="text" class="form-control" id="codigoTarjeta" required>
-            </div>
-            <div class="mb-3 formBold">
-                <label for="dniTarjeta" class="form-label">DNI del titular de la tarjeta</label>
-                <input type="text" class="form-control" id="dniTarjeta" required>
-            </div>
-            <div class="mb-3 formBold">
-                <label for="confirmarEmail" class="form-label">Confirmar Email</label>
-                <input type="email" class="form-control" id="confirmarEmail" required>
-            </div>
-            <div class="d-flex justify-content-center"><button type="submit" value="enviar" class="btn btn-primary"
-                    role="button" id="comprarButton" disabled>Confirmar compra</button>
-            </div>
+            </form>
+        </div>
+    </main>
 
-        </form>
+    <footer class="container-fluid d-flex justify-content-center bg-dark fixed-bottom py-2" data-bs-theme="dark">
+        <span class="text-light d-none d-md-block"> ¡El Rock & Roll no morirá jamas! </span>
+    </footer>
 
-        <!-- BS SCRIPT -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous"></script>
+    <!-- BS SCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

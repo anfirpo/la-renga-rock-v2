@@ -6,88 +6,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- BS CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
 
     <!-- Scripts js -->
     <script defer src="../scripts/compra-entradas.js"></script>
 </head>
 
 <body>
-    <h1>Recitales</h1>
-
-    <!-- <i class="fa-regular fa-cart-shopping"></i> -->
-
-    <br>
-
-    <!-- DROPDOWN DE FECHAS -->
-    <div class="dropdown" id="dropdownFechas">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownFechasButton"
-            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Selecciona una fecha
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownFechasButton" id="dropdownMenuFechas">
-            <!-- Aquí se llenará con opciones usando JavaScript -->
+    <header class="navbar navbar-expand-lg bg-dark fixed-top text-uppercase" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand nav-link" href="../index.html"><img src="../img/la-renga.png" alt="Logo de La Renga"
+                    class="logo"></a>
+            <a class="navbar-brand nav-link" href="compra-carrito-pago.html"><i
+                    class="fa-solid fa-cart-shopping"></i></a>
         </div>
-    </div>
+    </header>
 
-    <input type="text" class="form-control collapse" id="fechaRecital" disabled>
+    <main class="mainCarrito">
 
-    <br>
+        <h2>Recitales</h2>
 
-    <!-- DROPDOWN DE SECTORES -->
-    <div class="dropdown collapse" id="dropdownSectores">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSectoresButton"
-            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Selecciona un sector
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownSectoresButton" id="dropdownMenuSectores">
-            <!-- Aquí se llenará con opciones usando JavaScript -->
+        <div id="divSeleccionEntradas" class="container-fluid mb-3 col-md-8 col-sm-12 my-4">
+
+            <!-- DROPDOWN DE FECHAS -->
+            <div class="dropdown mt-4" id="dropdownFechas">
+                <button class="btn btn-secondary dropdown-toggle my-1" type="button" id="dropdownFechasButton"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Selecciona una fecha
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownFechasButton" id="dropdownMenuFechas">
+                    <!-- Aquí se llenará con opciones usando JavaScript -->
+                </div>
+            </div>
+
+            <input type="text" class="form-control collapse" id="fechaRecital" disabled>
+
+            <!-- DROPDOWN DE SECTORES -->
+            <div class="dropdown collapse mt-4" id="dropdownSectores">
+                <button class="btn btn-secondary dropdown-toggle my-1" type="button" id="dropdownSectoresButton"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Selecciona un sector
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownSectoresButton" id="dropdownMenuSectores">
+                    <!-- Aquí se llenará con opciones usando JavaScript -->
+                </div>
+            </div>
+
+            <input type="text" class="form-control collapse" id="sectorRecital" disabled>
+
+            <!-- DROPDOWN DE CANTIDAD DE ENTRADAS -->
+            <div class="dropdown collapse mt-4" id="dropdownCantidad">
+                <button class="btn btn-secondary dropdown-toggle my-1" type="button" id="dropdownCantidadButton"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Seleccione la cantidad
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownCantidadButton" id="dropdownMenuCantidad">
+                    <!-- Aquí se llenará con opciones usando JavaScript -->
+                </div>
+            </div>
+
+            <input type="number" class="form-control collapse" id="entradasRecital" disabled>
+
+            <!-- PRECIO TOTAL DE LA SELECCIÓN -->
+            <div class="d-flex justify-content-evenly mt-4">
+                <input type="text" class="form-control text-center mx-3 mt-3 collapse" value="TOTAL A PAGAR ($ARS)"
+                    id="totalRecitalTexto" disabled>
+                <input type="number" class="form-control mx-3 mt-3 text-center collapse" id="totalRecitalValor"
+                    disabled>
+            </div>
+
+            <!-- BOTONES DE DECISIÓN -->
+            <div class="d-flex justify-content-evenly mt-4">
+                <button type="reset" value="Borrar" class="btn btn-danger mt-3 mb-5 buttonFont"
+                    id="botonDescartarCompra">Descartar selección</button>
+                <button type="submit" value="Enviar" class="btn btn-primary mt-3 mb-5 buttonFont"
+                    id="botonAgregarCompra">Agregar al carrito</button>
+                <button type="submit" value="Enviar" class="btn btn-success mt-3 mb-5 buttonFont"
+                    id="botonFinalizarCompra">Ir
+                    al carrito</button>
+            </div>
+
         </div>
-    </div>
+    </main>
 
-    <input type="text" class="form-control collapse" id="sectorRecital" disabled>
-
-    <br>
-
-    <!-- DROPDOWN DE CANTIDAD DE ENTRADAS -->
-    <div class="dropdown collapse" id="dropdownCantidad">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCantidadButton"
-            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Seleccione la cantidad
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownCantidadButton" id="dropdownMenuCantidad">
-            <!-- Aquí se llenará con opciones usando JavaScript -->
-        </div>
-    </div>
-
-    <input type="number" class="form-control collapse" id="entradasRecital" disabled>
-
-    <br>
-
-    <!-- PRECIO TOTAL DE LA SELECCIÓN -->
-    <div class="d-flex justify-content-evenly">
-        <input type="text" class="form-control text-center mx-3 collapse" value="TOTAL A PAGAR ($ARS)"
-            id="totalRecitalTexto" disabled>
-        <input type="number" class="form-control mx-3 text-center collapse" id="totalRecitalValor" disabled>
-    </div>
-
-    <br>
-
-    <!-- BOTONES DE DECISIÓN -->
-    <div class="d-flex justify-content-evenly">
-        <button type="reset" value="Borrar" class="btn btn-danger mt-2 mb-5 buttonFont"
-            id="botonDescartarCompra">Descartar selección</button>
-        <button type="submit" value="Enviar" class="btn btn-primary mt-2 mb-5 buttonFont"
-            id="botonAgregarCompra">Agregar al carrito</button>
-        <button type="submit" value="Enviar" class="btn btn-success mt-2 mb-5 buttonFont" id="botonFinalizarCompra">Ir
-            al carrito</button>
-    </div>
+    <footer class="container-fluid d-flex justify-content-center bg-dark fixed-bottom py-2" data-bs-theme="dark">
+        <span class="text-light d-none d-md-block"> ¡El Rock & Roll no morirá jamas! </span>
+    </footer>
 
     <!-- BS SCRIPT -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

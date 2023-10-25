@@ -168,6 +168,31 @@ h3 {
 }
 
 /*******************************************************************/
+/**************   CSS PROCESO DE COMPRA DE ENTRADAS   **************/
+/*******************************************************************/
+.mainCarrito {
+  padding-top: 73px;
+}
+.mainCarrito h1 {
+  margin: 20px;
+  color: rgb(14, 15, 50);
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+.mainCarrito h4 {
+  line-height: 1.8;
+  text-align: justify;
+}
+.mainCarrito #loginForm label {
+  font-weight: bold;
+}
+.mainCarrito #loginForm button {
+  font-weight: bold;
+  text-align: center;
+}
+
+/*******************************************************************/
 /*************************   DISCOS.HTML   *************************/
 /*******************************************************************/
 .discoHover:hover {
