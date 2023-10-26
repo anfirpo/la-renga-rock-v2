@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         contenedorPrincipal.appendChild(header)
 
         let trashCan = document.createElement("i")
-        trashCan.classList.add("fa-regular", "fa-trash-can", "col-1", "text-end")
+        trashCan.classList.add("fa-regular", "fa-trash-can", "col-1", "text-end", "pointer")
         contenedorPrincipal.appendChild(trashCan)
 
         let contenedorBody = document.createElement("div")
