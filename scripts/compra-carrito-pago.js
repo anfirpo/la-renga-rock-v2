@@ -31,11 +31,11 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("entró a las cards solas")
 
         let contenedorPrincipal = document.createElement("div")
-        contenedorPrincipal.classList.add("container-fluid", "d-flex", "flex-wrap", "align-items-center")
+        contenedorPrincipal.classList.add("container-fluid", "d-flex", "flex-wrap", "align-items-center", "my-3")
         carritoProductos.appendChild(contenedorPrincipal)
 
         let header = document.createElement("h4")
-        header.classList.add("card-header", "col-11")
+        header.classList.add("card-header", "col-11", "fw-bold", "fs-6")
         header.textContent = seleccion.fecha
         contenedorPrincipal.appendChild(header)
 
@@ -48,24 +48,27 @@ document.addEventListener("DOMContentLoaded", function () {
         contenedorPrincipal.appendChild(contenedorBody)
 
         let sector = document.createElement("h5")
-        sector.classList.add("card-title")
-        sector.textContent = "Sector: " + seleccion.sector
+        sector.classList.add("card-title", "fst-italic", "py-2", "fs-6")
+        sector.textContent = ". Sector: " + seleccion.sector
         contenedorBody.appendChild(sector)
 
         let precioUnitario = document.createElement("p")
-        precioUnitario.classList.add("card-text")
-        precioUnitario.textContent = "p/u: $" + seleccion.preciounitario
+        precioUnitario.classList.add("card-text", "py-2", "fs-6")
+        precioUnitario.textContent = ". p/u: $" + seleccion.preciounitario
         contenedorBody.appendChild(precioUnitario)
 
         let cantidadEntradas = document.createElement("p")
-        cantidadEntradas.classList.add("card-text")
-        cantidadEntradas.textContent = "Cantidad: " + seleccion.cantidad + " entradas"
+        cantidadEntradas.classList.add("card-text", "py-2", "fs-6")
+        cantidadEntradas.textContent = ". Cantidad: " + seleccion.cantidad + " entradas"
         contenedorBody.appendChild(cantidadEntradas)
 
         let precioParcialSeleccion = document.createElement("h5")
-        precioParcialSeleccion.classList.add("card-title")
-        precioParcialSeleccion.textContent = "$" + parseInt(seleccion.preciounitario) * parseInt(seleccion.cantidad)
+        precioParcialSeleccion.classList.add("card-title", "py-2", "fw-bold", "fs-6")
+        precioParcialSeleccion.textContent = ". Total: $" + parseInt(seleccion.preciounitario) * parseInt(seleccion.cantidad)
         contenedorBody.appendChild(precioParcialSeleccion)
+
+        let lineaHorizontal = document.createElement("hr")
+        carritoProductos.appendChild(lineaHorizontal)
 
     })
 
@@ -76,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("entró al resumen")
 
         let fechaResumen = document.createElement("p")
-        fechaResumen.classList.add("card-text")
+        fechaResumen.classList.add("card-text", "mb-5", "mt-3")
         fechaResumen.textContent = seleccion.fecha
         carritoResumen.appendChild(fechaResumen)
 

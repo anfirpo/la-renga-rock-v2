@@ -31,21 +31,21 @@
     <main class="mainCarrito">
         <h2>Carrito de compra</h2>
 
-        <div class="container-fluid row pt-2 pb-5">
-            <div id="carritoProductos" class="card col-xl-8 col-md-7 col-sm-12 d-flex flex-wrap mt-3 mb-5 fs-6">
+        <div class="container-fluid row pt-2 pb-5 d-flex justify-content-evenly">
+            <div id="carritoProductos" class="card col-xl-7 col-md-12 col-sm-12 d-flex flex-wrap mt-3 mb-5 fs-6">
                 <!-- Lo lleno con usando código Javascript -->
             </div>
 
-            <div class="card col-xl-4 col-md-5 col-sm-12 d-flex flex-wrap mt-3 mb-5 fs-6">
-                <h4 class="card-header">Resumen de la compra</h4>
+            <div class="card col-xl-4 col-md-12 col-sm-12 d-flex flex-wrap mt-3 mb-5 fs-6">
+                <h4 class="card-header mt-3 fw-bold">Resumen de la compra</h4>
                 <div id="carritoResumen" class="card-body">
                     <!-- Lo lleno con usando código Javascript -->
-                    <br>
-                    <p id="subtotalResumen" class="card-text">Subtotal</p>
-                    <p id="costoServicioResumen" class="card-text">Costo del servicio</p>
+                    <hr>
+                    <p id="subtotalResumen" class="card-text my-4 fw-bold">Subtotal</p>
+                    <p id="costoServicioResumen" class="card-text my-4 fst-italic">Costo del servicio</p>
                 </div>
-                <h4 id="totalResumen" class="card-footer">Total</h4>
-                <a id="irAlPago" href="#formPagoEntradas" class="btn btn-primary">Ir al pago</a>
+                <h4 id="totalResumen" class="card-footer fw-bold fs-5">Total</h4>
+                <a id="irAlPago" href="#formPagoEntradas" class="btn btn-primary my-3 fw-bold fs-5">Ir al pago</a>
             </div>
         </div>
 
