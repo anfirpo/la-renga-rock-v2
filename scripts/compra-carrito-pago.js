@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let costoServicioResumen = document.getElementById("costoServicioResumen")
     let totalResumen = document.getElementById("totalResumen")
     let irAlPago = document.getElementById("irAlPago")
+    let subtotalResumenValor = 0
+    let costoServicioResumenValor = 0
 
     /* Inicializo variables parte del pago */
     let formPagoEntradas = document.getElementById("formPagoEntradas")
@@ -24,89 +26,127 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* Despliego todos los productos agregados al carrito con JavaScript: */
 
-    let carritoCompra = [{ codigo: 1, fecha: 'SEP 24 - MENDOZA, ARGENTINA - ESTADIO MALVINAS ARGENTINAS', sector: 'PLATEA BAJA', preciounitario: 20000, cantidad: '4', preciototal: 80000 }, { codigo: 2, fecha: 'SEP 12 - CÓRDOBA, ARGENTINA - ESTADIO MARIO ALBERTO KEMPES', sector: 'CAMPO VIP', preciounitario: 25000, cantidad: '1', preciototal: 25000 }, { codigo: 3, fecha: 'AGO 26 - BUENOS AIRES, ARGENTINA - ESTADIO TOMÁS ADOLFO DUCÓ', sector: 'POPULAR', preciounitario: 10000, cantidad: '4', preciototal: 40000 }]
+    let carritoCompra = [{ fecha: 'SEP 24 - MENDOZA, ARGENTINA - ESTADIO MALVINAS ARGENTINAS', sector: 'PLATEA BAJA', preciounitario: 20000, cantidad: '4', preciototal: 80000 }, { fecha: 'SEP 12 - CÓRDOBA, ARGENTINA - ESTADIO MARIO ALBERTO KEMPES', sector: 'CAMPO VIP', preciounitario: 25000, cantidad: '1', preciototal: 25000 }, { fecha: 'AGO 26 - BUENOS AIRES, ARGENTINA - ESTADIO TOMÁS ADOLFO DUCÓ', sector: 'POPULAR', preciounitario: 10000, cantidad: '4', preciototal: 40000 }]
 
-    carritoCompra.forEach(function (seleccion) {
+    let n = 0
 
-        console.log("entró a las cards solas")
+    while (n == 0) {
+        console.log("Entra al while")
+        function actualizarCarrito() {
+            console.log("Entra al function")
 
-        let contenedorPrincipal = document.createElement("div")
-        contenedorPrincipal.classList.add("container-fluid", "d-flex", "flex-wrap", "align-items-center", "my-3")
-        carritoProductos.appendChild(contenedorPrincipal)
+            /* Pongo n=1 para salir del while cuando termine */
+            n = 1
+            console.log(carritoCompra)
 
-        let header = document.createElement("h4")
-        header.classList.add("card-header", "col-11", "fw-bold", "fs-6")
-        header.textContent = seleccion.fecha
-        contenedorPrincipal.appendChild(header)
+            /* Le pongo código a las selecciones */
+            let codigoInicial = 1;
 
-        let trashCan = document.createElement("i")
-        trashCan.id = seleccion.codigo
-        trashCan.classList.add("fa-regular", "fa-trash-can", "col-1", "text-end", "pointer")
-        contenedorPrincipal.appendChild(trashCan)
-        console.log(trashCan.id)
+            for (let i = 0; i < carritoCompra.length; i++) {
+                carritoCompra[i].codigo = codigoInicial;
+                codigoInicial++;
+            }
 
-        let contenedorBody = document.createElement("div")
-        contenedorBody.classList.add("card-body")
-        contenedorPrincipal.appendChild(contenedorBody)
+            carritoCompra.forEach(function (seleccion) {
 
-        let sector = document.createElement("h5")
-        sector.classList.add("card-title", "fst-italic", "py-2", "fs-6")
-        sector.textContent = ". Sector: " + seleccion.sector
-        contenedorBody.appendChild(sector)
+                console.log("entró a las cards solas")
 
-        let precioUnitario = document.createElement("p")
-        precioUnitario.classList.add("card-text", "py-2", "fs-6")
-        precioUnitario.textContent = ". p/u: $" + seleccion.preciounitario
-        contenedorBody.appendChild(precioUnitario)
+                let contenedorPrincipal = document.createElement("div")
+                contenedorPrincipal.classList.add("container-fluid", "d-flex", "flex-wrap", "align-items-center", "my-3")
+                carritoProductos.appendChild(contenedorPrincipal)
 
-        let cantidadEntradas = document.createElement("p")
-        cantidadEntradas.classList.add("card-text", "py-2", "fs-6")
-        cantidadEntradas.textContent = ". Cantidad: " + seleccion.cantidad + " entradas"
-        contenedorBody.appendChild(cantidadEntradas)
+                let header = document.createElement("h4")
+                header.classList.add("card-header", "col-11", "fw-bold", "fs-6")
+                header.textContent = seleccion.fecha
+                contenedorPrincipal.appendChild(header)
 
-        let precioParcialSeleccion = document.createElement("h5")
-        precioParcialSeleccion.classList.add("card-title", "py-2", "fw-bold", "fs-6")
-        precioParcialSeleccion.textContent = ". Total: $" + parseInt(seleccion.preciounitario) * parseInt(seleccion.cantidad)
-        contenedorBody.appendChild(precioParcialSeleccion)
+                let trashCan = document.createElement("i")
+                trashCan.id = seleccion.codigo
+                trashCan.classList.add("fa-regular", "fa-trash-can", "col-1", "text-end", "pointer")
+                contenedorPrincipal.appendChild(trashCan)
+                console.log(trashCan.id)
 
-        let lineaHorizontal = document.createElement("hr")
-        carritoProductos.appendChild(lineaHorizontal)
+                let contenedorBody = document.createElement("div")
+                contenedorBody.classList.add("card-body")
+                contenedorPrincipal.appendChild(contenedorBody)
 
-        trashCan.addEventListener("click", function () {
-            console.log(trashCan.id)
+                let sector = document.createElement("h5")
+                sector.classList.add("card-title", "fst-italic", "py-2", "fs-6")
+                sector.textContent = ". Sector: " + seleccion.sector
+                contenedorBody.appendChild(sector)
 
-        })
+                let precioUnitario = document.createElement("p")
+                precioUnitario.classList.add("card-text", "py-2", "fs-6")
+                precioUnitario.textContent = ". p/u: $" + seleccion.preciounitario
+                contenedorBody.appendChild(precioUnitario)
 
-    })
+                let cantidadEntradas = document.createElement("p")
+                cantidadEntradas.classList.add("card-text", "py-2", "fs-6")
+                cantidadEntradas.textContent = ". Cantidad: " + seleccion.cantidad + " entradas"
+                contenedorBody.appendChild(cantidadEntradas)
 
-    /* Despliego el resumen del carrito con JavaScript: */
+                let precioParcialSeleccion = document.createElement("h5")
+                precioParcialSeleccion.classList.add("card-title", "py-2", "fw-bold", "fs-6")
+                precioParcialSeleccion.textContent = ". Total: $" + parseInt(seleccion.preciounitario) * parseInt(seleccion.cantidad)
+                contenedorBody.appendChild(precioParcialSeleccion)
 
-    carritoCompra.forEach(function (seleccion) {
+                let lineaHorizontal = document.createElement("hr")
+                carritoProductos.appendChild(lineaHorizontal)
 
-        console.log("entró al resumen")
+                /* Botón para borrar la selección */
+                trashCan.onclick = function () {
+                    console.log("Has hecho clic en el botón: " + trashCan.id)
+                    console.log(trashCan.id - 1)
+                    carritoCompra.splice(trashCan.id - 1, 1)
+                    console.log(carritoCompra)
 
-        let fechaResumen = document.createElement("p")
-        fechaResumen.classList.add("card-text", "mb-5", "mt-3")
-        fechaResumen.textContent = seleccion.fecha
-        carritoResumen.appendChild(fechaResumen)
+                    /* Limpio el carrito y el resumen */
+                    carritoProductos.innerHTML = ""
+                    console.log("Limpio el carrito")/* Limpio el carrito */
+                    carritoResumen.innerHTML = ""
+                    console.log("Limpio el resumen")
 
-        /* Obtengo el primer hijo del div carritoResumen */
-        let primerElemento = carritoResumen.firstChild
+                    /* Actualizo el carrito */
+                    console.log("Pongo n en 0")
+                    n = 0
+                    console.log("El valor de n: " + n)
+                    actualizarCarrito()
+                }
 
-        /* Inserto fechaResumen antes del primer elemento */
-        carritoResumen.insertBefore(fechaResumen, primerElemento)
+            })
 
-    })
+            /* Despliego el resumen del carrito con JavaScript: */
 
-    /* Calculo Subtotal, coste de servicio, y total: */
+            carritoCompra.forEach(function (seleccion) {
 
-    let subtotalResumenValor = carritoCompra.reduce((total, producto) => total + producto.preciototal, 0)
-    subtotalResumen.textContent = "Subtotal: $" + subtotalResumenValor
+                console.log("entró al resumen")
 
-    let costoServicioResumenValor = parseInt(((subtotalResumenValor * 3) / 100) * carritoCompra.length)
-    costoServicioResumen.textContent = "Costo del servicio: $" + costoServicioResumenValor
+                let fechaResumen = document.createElement("p")
+                fechaResumen.classList.add("card-text", "mb-5", "mt-3")
+                fechaResumen.textContent = seleccion.fecha
+                carritoResumen.appendChild(fechaResumen)
 
-    totalResumen.textContent = "Total: $" + (subtotalResumenValor + costoServicioResumenValor)
+                /* Obtengo el primer hijo del div carritoResumen */
+                let primerElemento = carritoResumen.firstChild
+
+                /* Inserto fechaResumen antes del primer elemento */
+                carritoResumen.insertBefore(fechaResumen, primerElemento)
+
+            })
+
+            /* Calculo Subtotal, coste de servicio, y total: */
+
+            subtotalResumenValor = carritoCompra.reduce((total, producto) => total + producto.preciototal, 0)
+            subtotalResumen.textContent = "Subtotal: $" + subtotalResumenValor
+
+            costoServicioResumenValor = parseInt(((subtotalResumenValor * 3) / 100) * carritoCompra.length)
+            costoServicioResumen.textContent = "Costo del servicio: $" + costoServicioResumenValor
+
+            totalResumen.textContent = "Total: $" + (subtotalResumenValor + costoServicioResumenValor)
+
+        }
+        actualizarCarrito()
+    }
 
     /* Listener para ir al método y procesamiento de pago: */
     irAlPago.addEventListener("click", function () {
