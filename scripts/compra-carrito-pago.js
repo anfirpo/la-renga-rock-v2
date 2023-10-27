@@ -6,10 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* Inicializo variables parte del carrito */
     let carritoProductos = document.getElementById("carritoProductos")
-    let trashCan = []
-    let i = 0
-    let contenedorPrincipal = []
-    let j = 0
+    let trashCan = 0
     let carritoResumen = document.getElementById("carritoResumen")
     let subtotalResumen = document.getElementById("subtotalResumen")
     let costoServicioResumen = document.getElementById("costoServicioResumen")
@@ -34,22 +31,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log("entró a las cards solas")
 
-        contenedorPrincipal[j] = document.createElement("div")
-        contenedorPrincipal[j].classList.add("container-fluid", "d-flex", "flex-wrap", "align-items-center", "my-3")
-        carritoProductos.appendChild(contenedorPrincipal[j])
+        let contenedorPrincipal = document.createElement("div")
+        contenedorPrincipal.classList.add("container-fluid", "d-flex", "flex-wrap", "align-items-center", "my-3")
+        carritoProductos.appendChild(contenedorPrincipal)
 
         let header = document.createElement("h4")
         header.classList.add("card-header", "col-11", "fw-bold", "fs-6")
         header.textContent = seleccion.fecha
-        contenedorPrincipal[j].appendChild(header)
+        contenedorPrincipal.appendChild(header)
 
-        trashCan[i] = document.createElement("i")
-        trashCan[i].classList.add("fa-regular", "fa-trash-can", "col-1", "text-end", "pointer")
-        contenedorPrincipal[j].appendChild(trashCan[i])
+        trashCan = document.createElement("i")
+        trashCan.classList.add("fa-regular", "fa-trash-can", "col-1", "text-end", "pointer")
+        contenedorPrincipal.appendChild(trashCan)
+        trashCan.valueOf = seleccion.codigo
+        console.log(trashCan.valueOf)
 
         let contenedorBody = document.createElement("div")
         contenedorBody.classList.add("card-body")
-        contenedorPrincipal[j].appendChild(contenedorBody)
+        contenedorPrincipal.appendChild(contenedorBody)
 
         let sector = document.createElement("h5")
         sector.classList.add("card-title", "fst-italic", "py-2", "fs-6")
@@ -74,20 +73,12 @@ document.addEventListener("DOMContentLoaded", function () {
         let lineaHorizontal = document.createElement("hr")
         carritoProductos.appendChild(lineaHorizontal)
 
-        i++
-        j++
-
     })
 
-    /* Uso el listener para decirle al tacho de basura qué selección quiero borrar */
-    trashCan.forEach(function (bin) {
 
-        bin.addEventListener("click", function () {
+    trashCan.addEventListener("click", function () {
 
-            n = 0
-            console.log("borrar selección " + n)
-            n++
-        })
+        console.log("borrar selección")
     })
 
     /* Despliego el resumen del carrito con JavaScript: */
