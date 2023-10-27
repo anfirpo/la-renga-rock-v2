@@ -59,7 +59,6 @@ fechas.forEach(function (fecha) {
     let elemento = document.createElement("a")
     elemento.classList.add("dropdown-item")
     elemento.textContent = fecha
-    elemento.href = "#"
     elemento.addEventListener("click", function () {
 
         fechaRecital.value = fecha
@@ -78,7 +77,6 @@ sectores.forEach(function (sector) {
     let elemento = document.createElement("a")
     elemento.classList.add("dropdown-item")
     elemento.textContent = sector
-    elemento.href = "#"
     elemento.addEventListener("click", function () {
 
         sectorRecital.value = sector
@@ -106,7 +104,6 @@ cantidad.forEach(function (cant) {
     let elemento = document.createElement("a")
     elemento.classList.add("dropdown-item")
     elemento.textContent = cant
-    elemento.href = "#"
     elemento.addEventListener("click", function () {
 
         entradasRecital.value = parseInt(cant)

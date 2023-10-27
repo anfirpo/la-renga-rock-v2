@@ -16,16 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* Inicializo variables parte del pago */
     let formPagoEntradas = document.getElementById("formPagoEntradas")
-    const numeroTarjeta = document.getElementById("numeroTarjeta")
-    const nombreTarjeta = document.getElementById("nombreTarjeta")
-    const vencimientoTarjeta = document.getElementById("vencimientoTarjeta")
-    const codigoTarjeta = document.getElementById("codigoTarjeta")
-    const dniTarjeta = document.getElementById("dniTarjeta")
-    const confirmarEmail = document.getElementById("confirmarEmail")
-    let comprarButton = document.getElementById("comprarButton")
-
-    /* Me traigo el carritoCompra desde compra-entradas.html para probar */
-    /* console.log(miArray) */
 
     /* Despliego todos los productos agregados al carrito con JavaScript: */
 
@@ -187,35 +177,20 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         })
 
-        /* Chequeo si completé todos los datos de la tarjeta para habilitar el botón */
-        function checkInputsPago() {
-            if (numeroTarjeta.value.trim() !== "" && nombreTarjeta.value.trim() !== "" && vencimientoTarjeta.value.trim() !== "" && codigoTarjeta.value.trim() !== "" && dniTarjeta.value.trim() !== "" && confirmarEmail.value.trim() !== "") {
-                comprarButton.removeAttribute("disabled")
-            } else {
-                comprarButton.setAttribute("disabled", "true")
-            }
-        }
-
-        /* Uso el listener para ir avisando qué datos voy completando */
-        numeroTarjeta.addEventListener("input", checkInputsPago)
-        nombreTarjeta.addEventListener("input", checkInputsPago)
-        vencimientoTarjeta.addEventListener("input", checkInputsPago)
-        codigoTarjeta.addEventListener("input", checkInputsPago)
-        dniTarjeta.addEventListener("input", checkInputsPago)
-        confirmarEmail.addEventListener("input", checkInputsPago)
-
         /* Uso el listener para decirle al botón a qué página quiero que me redirija */
-        comprarButton.addEventListener("click", function () {
+        document.getElementById("formularioPago").addEventListener("submit", function (event) {
+            // Previene el comportamiento por defecto de envío del formulario
+            event.preventDefault();
 
+            // Después de la validación, redirige a la página deseada
             window.location.href = "compra-exitosa.html"
-        })
+        });
+
     } else {
         alert("Tu carrito de compra está vacío")
 
         /* Redirecciono a compra-entradas después de aceptar */
         window.location.href = "compra-entradas.html"
     }
-
-
 
 })
