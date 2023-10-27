@@ -9,6 +9,9 @@ let sectores = ["PLATEA ALTA - $15000", "PLATEA BAJA - $20000", "POPULAR - $1000
 
 let cantidad = [1, 2, 3, 4, 5]
 
+/* Array de objetos para probar */
+/* let miArray = [{ codigo: 0, color: "rojo" }, { codigo: 1, color: "azul" }, { codigo: 2, color: "verde" }] */
+
 /* Creo las variables que apuntan a los dropdown en HTML: */
 let dropdownMenuFechas = document.getElementById("dropdownMenuFechas")
 let dropdownMenuSectores = document.getElementById("dropdownMenuSectores")
@@ -33,8 +36,7 @@ totalRecitalValor.value = 0
 let carritoCompra = []
 
 class Seleccion {
-    constructor(codigo, fecha, sector, precioUnitario, cantidad) {
-        this.codigo = parseInt(codigo)
+    constructor(fecha, sector, precioUnitario, cantidad) {
         this.fecha = fecha
         this.sector = sector
         this.preciounitario = precioUnitario
@@ -51,7 +53,6 @@ let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
 /* Declaro las siguientes variables para que sean globales */
 let sectorLugar = ""
 let sectorPrecio = 0
-let ordenDeCompra = 0
 
 /* Llenar el Dropdown de fechas con JavaScript: */
 fechas.forEach(function (fecha) {
@@ -163,9 +164,8 @@ botonDescartarCompra.addEventListener("click", function () {
 botonAgregarCompra.addEventListener("click", function () {
 
     if (totalRecitalValor.classList.contains("show")) {
-        ordenDeCompra++
 
-        carritoCompra.push(new Seleccion(ordenDeCompra, fechaRecital.value, sectorLugar, sectorPrecio, entradasRecital.value))
+        carritoCompra.push(new Seleccion(fechaRecital.value, sectorLugar, sectorPrecio, entradasRecital.value))
 
         console.log(carritoCompra)
 

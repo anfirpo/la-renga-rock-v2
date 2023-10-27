@@ -32,7 +32,7 @@
 
         <h2>Recitales</h2>
 
-        <div id="divSeleccionEntradas" class="container-fluid mb-3 col-md-8 col-sm-12 my-4">
+        <div id="divSeleccionEntradas" class="container-fluid mb-3 col-md-10 col-sm-12 my-4">
 
             <!-- DROPDOWN DE FECHAS -->
             <div class="dropdown mt-4" id="dropdownFechas">
@@ -75,20 +75,22 @@
 
             <!-- PRECIO TOTAL DE LA SELECCIÓN -->
             <div class="d-flex justify-content-evenly mt-4">
-                <input type="text" class="form-control text-center mx-3 mt-3 collapse" value="TOTAL A PAGAR ($ARS)"
+                <input type="text" class="form-control text-center mx-3 mt-3 collapse" value="TOTAL ($ARS)"
                     id="totalRecitalTexto" disabled>
                 <input type="number" class="form-control mx-3 mt-3 text-center collapse" id="totalRecitalValor"
                     disabled>
             </div>
 
             <!-- BOTONES DE DECISIÓN -->
-            <div class="d-flex justify-content-evenly mt-4">
-                <button type="reset" value="Borrar" class="btn btn-danger mt-3 mb-5 buttonFont"
+            <div class="container-fluid row d-flex justify-content-evenly pt-5">
+                <button type="reset" value="Borrar"
+                    class="btn btn-danger col-xl-3 col-md-3 col-sm-8 mt-3 mb-3 buttonFont"
                     id="botonDescartarCompra">Descartar selección</button>
-                <button type="submit" value="Enviar" class="btn btn-primary mt-3 mb-5 buttonFont"
+                <button type="submit" value="Enviar"
+                    class="btn btn-primary col-xl-3 col-md-3 col-sm-8 mt-3 mb-3 buttonFont"
                     id="botonAgregarCompra">Agregar al carrito</button>
-                <button type="submit" value="Enviar" class="btn btn-success mt-3 mb-5 buttonFont"
-                    id="botonFinalizarCompra">Ir
+                <button type="submit" value="Enviar"
+                    class="btn btn-success col-xl-3 col-md-3 col-sm-8 mt-3 mb-3 buttonFont" id="botonFinalizarCompra">Ir
                     al carrito</button>
             </div>
 
