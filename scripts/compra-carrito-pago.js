@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* Inicializo variables parte del carrito */
     let carritoProductos = document.getElementById("carritoProductos")
-    let trashCan = 0
     let carritoResumen = document.getElementById("carritoResumen")
     let subtotalResumen = document.getElementById("subtotalResumen")
     let costoServicioResumen = document.getElementById("costoServicioResumen")
@@ -40,11 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
         header.textContent = seleccion.fecha
         contenedorPrincipal.appendChild(header)
 
-        trashCan = document.createElement("i")
+        let trashCan = document.createElement("i")
+        trashCan.id = seleccion.codigo
         trashCan.classList.add("fa-regular", "fa-trash-can", "col-1", "text-end", "pointer")
         contenedorPrincipal.appendChild(trashCan)
-        trashCan.valueOf = seleccion.codigo
-        console.log(trashCan.valueOf)
+        console.log(trashCan.id)
 
         let contenedorBody = document.createElement("div")
         contenedorBody.classList.add("card-body")
@@ -73,12 +72,11 @@ document.addEventListener("DOMContentLoaded", function () {
         let lineaHorizontal = document.createElement("hr")
         carritoProductos.appendChild(lineaHorizontal)
 
-    })
+        trashCan.addEventListener("click", function () {
+            console.log(trashCan.id)
 
+        })
 
-    trashCan.addEventListener("click", function () {
-
-        console.log("borrar selección")
     })
 
     /* Despliego el resumen del carrito con JavaScript: */
