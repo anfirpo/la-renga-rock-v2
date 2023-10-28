@@ -164,6 +164,8 @@ botonAgregarCompra.addEventListener("click", function () {
 
         carritoCompra.push(new Seleccion(fechaRecital.value, sectorLugar, sectorPrecio, entradasRecital.value))
 
+        localStorage.setItem('carritoCompra', JSON.stringify(carritoCompra)); // Guardar en localStorage
+
         console.log(carritoCompra)
 
         limpiarSeleccion()
