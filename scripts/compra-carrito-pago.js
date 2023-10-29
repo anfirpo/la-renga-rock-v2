@@ -5,6 +5,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     /* Inicializo variables parte del carrito */
+    let descartarCarrito = document.getElementById("descartarCarrito")
     let carritoProductos = document.getElementById("carritoProductos")
     let carritoResumen = document.getElementById("carritoResumen")
     let subtotalResumen = document.getElementById("subtotalResumen")
@@ -17,11 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
     /* Inicializo variables parte del pago */
     let formPagoEntradas = document.getElementById("formPagoEntradas")
 
-    /* Despliego todos los productos agregados al carrito con JavaScript: */
-
-    /* let carritoCompra = [{ fecha: 'SEP 24 - MENDOZA, ARGENTINA - ESTADIO MALVINAS ARGENTINAS', sector: 'PLATEA BAJA', preciounitario: 20000, cantidad: '4', preciototal: 80000 }, { fecha: 'SEP 12 - CÓRDOBA, ARGENTINA - ESTADIO MARIO ALBERTO KEMPES', sector: 'CAMPO VIP', preciounitario: 25000, cantidad: '1', preciototal: 25000 }, { fecha: 'AGO 26 - BUENOS AIRES, ARGENTINA - ESTADIO TOMÁS ADOLFO DUCÓ', sector: 'POPULAR', preciounitario: 10000, cantidad: '4', preciototal: 40000 }] */
-
-    let carritoCompra = JSON.parse(localStorage.getItem('carritoCompra')); // Recuperar de localStorage
+    /* Recuperar de localStorage. Despliego todos los productos agregados al carrito con JavaScript: */
+    let carritoCompra = JSON.parse(localStorage.getItem("carritoCompra"))
 
     /* Si el carrito está vacío, me devuelve a la página de selección */
     if (carritoCompra && carritoCompra.length != 0) {
@@ -98,9 +96,13 @@ document.addEventListener("DOMContentLoaded", function () {
                         carritoCompra.splice(trashCan.id - 1, 1)
                         console.log(carritoCompra)
 
+                        /* Guardar en localStorage */
+                        localStorage.setItem("carritoCompra", JSON.stringify(carritoCompra))
+
                         /* Limpio el carrito y el resumen */
                         carritoProductos.innerHTML = ""
-                        console.log("Limpio el carrito")/* Limpio el carrito */
+                        console.log("Limpio el carrito")
+                        /* Limpio el carrito */
                         carritoResumen.innerHTML = ""
                         console.log("Limpio el resumen")
 
@@ -128,10 +130,31 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                     }
 
+                    /* Función para limpiar el carrito */
+                    descartarCarrito.addEventListener("click", function () {
+
+                        carritoCompra.length = 0
+
+                        /* Guardar en localStorage */
+                        localStorage.setItem("carritoCompra", JSON.stringify(carritoCompra))
+
+                        /* Limpio el carrito y el resumen */
+                        carritoProductos.innerHTML = ""
+                        console.log("Limpio el carrito")
+                        /* Limpio el carrito */
+                        carritoResumen.innerHTML = ""
+                        console.log("Limpio el resumen")
+
+                        /* Actualizo el carrito */
+                        console.log("Pongo n en 0")
+                        n = 0
+                        console.log("El valor de n: " + n)
+                        actualizarCarrito()
+                    })
+
                 })
 
                 /* Despliego el resumen del carrito con JavaScript: */
-
                 carritoCompra.forEach(function (seleccion) {
 
                     console.log("entró al resumen")
@@ -150,7 +173,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
 
                 /* Calculo Subtotal, coste de servicio, y total: */
-
                 subtotalResumenValor = carritoCompra.reduce((total, producto) => total + producto.preciototal, 0)
                 subtotalResumen.textContent = "Subtotal: $" + subtotalResumenValor
 
@@ -181,10 +203,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         /* Uso el listener para decirle al botón a qué página quiero que me redirija */
         document.getElementById("formularioPago").addEventListener("submit", function (event) {
-            // Previene el comportamiento por defecto de envío del formulario
-            event.preventDefault();
+            /* Previene el comportamiento por defecto de envío del formulario */
+            event.preventDefault()
 
-            // Después de la validación, redirige a la página deseada
+            /* Después de la validación, redirige a la página deseada */
             window.location.href = "compra-exitosa.html"
         });
 
@@ -196,3 +218,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 })
+

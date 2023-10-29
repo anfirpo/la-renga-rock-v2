@@ -9,9 +9,6 @@ let sectores = ["PLATEA ALTA - $15000", "PLATEA BAJA - $20000", "POPULAR - $1000
 
 let cantidad = [1, 2, 3, 4, 5]
 
-/* Array de objetos para probar */
-/* let miArray = [{ codigo: 0, color: "rojo" }, { codigo: 1, color: "azul" }, { codigo: 2, color: "verde" }] */
-
 /* Creo las variables que apuntan a los dropdown en HTML: */
 let dropdownMenuFechas = document.getElementById("dropdownMenuFechas")
 let dropdownMenuSectores = document.getElementById("dropdownMenuSectores")
@@ -32,9 +29,11 @@ let totalRecitalTexto = document.getElementById("totalRecitalTexto")
 let totalRecitalValor = document.getElementById("totalRecitalValor")
 totalRecitalValor.value = 0
 
-/* Creo la clase constructora "Seleccion" e inicializo el array "carritoCompra" */
-let carritoCompra = []
 
+/* Inicializo el array "carritoCompra". Recuperar de localStorage. Despliego todos los productos agregados al carrito con JavaScript: */
+let carritoCompra = JSON.parse(localStorage.getItem("carritoCompra"))
+
+/* Creo la clase constructora "Seleccion" */
 class Seleccion {
     constructor(fecha, sector, precioUnitario, cantidad) {
         this.fecha = fecha
@@ -164,7 +163,8 @@ botonAgregarCompra.addEventListener("click", function () {
 
         carritoCompra.push(new Seleccion(fechaRecital.value, sectorLugar, sectorPrecio, entradasRecital.value))
 
-        localStorage.setItem('carritoCompra', JSON.stringify(carritoCompra)); // Guardar en localStorage
+        /* Guardar en localStorage */
+        localStorage.setItem("carritoCompra", JSON.stringify(carritoCompra))
 
         console.log(carritoCompra)
 
