@@ -146,9 +146,7 @@ function limpiarSeleccion() {
         fechaRecital.classList.toggle("show")
         dropdownSectores.classList.toggle("show")
 
-    } else {
-        console.log("No hay algún dropdown abierto")
-    }
+    } else { }
 }
 
 /* Asigno funciones a los botones */
@@ -165,8 +163,6 @@ botonAgregarCompra.addEventListener("click", function () {
 
         /* Guardar en localStorage */
         localStorage.setItem("carritoCompra", JSON.stringify(carritoCompra))
-
-        console.log(carritoCompra)
 
         limpiarSeleccion()
     } else {

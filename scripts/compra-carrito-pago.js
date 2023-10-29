@@ -27,13 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
         let n = 0
 
         while (n == 0) {
-            console.log("Entra al while")
             function actualizarCarrito() {
-                console.log("Entra al function")
 
                 /* Pongo n=1 para salir del while cuando termine */
                 n = 1
-                console.log(carritoCompra)
 
                 /* Le pongo código a las selecciones */
                 let codigoInicial = 1;
@@ -44,8 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                 carritoCompra.forEach(function (seleccion) {
-
-                    console.log("entró a las cards solas")
 
                     let contenedorPrincipal = document.createElement("div")
                     contenedorPrincipal.classList.add("container-fluid", "d-flex", "flex-wrap", "align-items-center", "my-3")
@@ -60,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     trashCan.id = seleccion.codigo
                     trashCan.classList.add("fa-regular", "fa-trash-can", "col-1", "text-end", "pointer")
                     contenedorPrincipal.appendChild(trashCan)
-                    console.log(trashCan.id)
 
                     let contenedorBody = document.createElement("div")
                     contenedorBody.classList.add("card-body")
@@ -90,35 +84,24 @@ document.addEventListener("DOMContentLoaded", function () {
                     carritoProductos.appendChild(lineaHorizontal)
 
                     /* Botón para borrar la selección */
-                    trashCan.onclick = function () {
-                        console.log("Has hecho clic en el botón: " + trashCan.id)
-                        console.log(trashCan.id - 1)
+                    trashCan.addEventListener("click", function () {
                         carritoCompra.splice(trashCan.id - 1, 1)
-                        console.log(carritoCompra)
 
                         /* Guardar en localStorage */
                         localStorage.setItem("carritoCompra", JSON.stringify(carritoCompra))
 
                         /* Limpio el carrito y el resumen */
                         carritoProductos.innerHTML = ""
-                        console.log("Limpio el carrito")
+
                         /* Limpio el carrito */
                         carritoResumen.innerHTML = ""
-                        console.log("Limpio el resumen")
 
                         /* Actualizo el carrito */
-                        console.log("Pongo n en 0")
                         n = 0
-                        console.log("El valor de n: " + n)
                         actualizarCarrito()
 
-                        /* Escondo de nuevo el método de pago si estaba desplegado */
-                        if (formPagoEntradas.classList.contains("show")) {
-                            formPagoEntradas.classList.toggle("show")
-                        } else { }
-
                         /* Escondo de nuevo el método de pago si estaba desplegado. Si no quedan producto, regreso a compra entradas */
-                        if (carritoCompra.length != 0) {
+                        if (carritoCompra && carritoCompra.length != 0) {
                             if (formPagoEntradas.classList.contains("show")) {
                                 formPagoEntradas.classList.toggle("show")
                             } else { }
@@ -128,36 +111,12 @@ document.addEventListener("DOMContentLoaded", function () {
                             /* Redirecciono a compra-entradas después de aceptar */
                             window.location.href = "compra-entradas.html"
                         }
-                    }
-
-                    /* Función para limpiar el carrito */
-                    descartarCarrito.addEventListener("click", function () {
-
-                        carritoCompra.length = 0
-
-                        /* Guardar en localStorage */
-                        localStorage.setItem("carritoCompra", JSON.stringify(carritoCompra))
-
-                        /* Limpio el carrito y el resumen */
-                        carritoProductos.innerHTML = ""
-                        console.log("Limpio el carrito")
-                        /* Limpio el carrito */
-                        carritoResumen.innerHTML = ""
-                        console.log("Limpio el resumen")
-
-                        /* Actualizo el carrito */
-                        console.log("Pongo n en 0")
-                        n = 0
-                        console.log("El valor de n: " + n)
-                        actualizarCarrito()
                     })
 
                 })
 
                 /* Despliego el resumen del carrito con JavaScript: */
                 carritoCompra.forEach(function (seleccion) {
-
-                    console.log("entró al resumen")
 
                     let fechaResumen = document.createElement("p")
                     fechaResumen.classList.add("card-text", "mb-5", "mt-3")
@@ -182,8 +141,39 @@ document.addEventListener("DOMContentLoaded", function () {
                 totalResumen.textContent = "Total: $" + (subtotalResumenValor + costoServicioResumenValor)
 
             }
+
             actualizarCarrito()
         }
+
+        /* Función para limpiar el carrito */
+        descartarCarrito.addEventListener("click", function () {
+
+            carritoCompra.length = 0
+
+            /* Guardar en localStorage */
+            localStorage.setItem("carritoCompra", JSON.stringify(carritoCompra))
+
+            /* Limpio el carrito y el resumen */
+            carritoProductos.innerHTML = ""
+
+            /* Limpio el carrito */
+            carritoResumen.innerHTML = ""
+
+            /* Actualizo el carrito */
+            n = 0
+
+            /* Escondo de nuevo el método de pago si estaba desplegado. Si no quedan producto, regreso a compra entradas */
+            if (carritoCompra && carritoCompra.length != 0) {
+                if (formPagoEntradas.classList.contains("show")) {
+                    formPagoEntradas.classList.toggle("show")
+                } else { }
+            } else {
+                alert("Tu carrito de compra está vacío")
+
+                /* Redirecciono a compra-entradas después de aceptar */
+                window.location.href = "compra-entradas.html"
+            }
+        })
 
         /* Listener para ir al método y procesamiento de pago: */
         irAlPago.addEventListener("click", function () {
