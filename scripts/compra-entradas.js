@@ -31,7 +31,12 @@ totalRecitalValor.value = 0
 
 
 /* Inicializo el array "carritoCompra". Recuperar de localStorage. Despliego todos los productos agregados al carrito con JavaScript: */
-let carritoCompra = JSON.parse(localStorage.getItem("carritoCompra"))
+
+let carritoCompra = []
+
+if (localStorage.getItem("carritoCompra")) {
+    carritoCompra = JSON.parse(localStorage.getItem("carritoCompra"))
+} else { }
 
 /* Creo la clase constructora "Seleccion" */
 class Seleccion {
