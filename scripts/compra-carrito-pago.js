@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             /* Después de la validación, redirige a la página deseada */
             window.location.href = "compra-exitosa.html"
-        });
+        })
 
     } else {
         alert("Tu carrito de compra está vacío")
