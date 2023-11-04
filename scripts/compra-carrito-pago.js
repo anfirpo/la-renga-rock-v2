@@ -52,8 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             <p class="card-text py-2 fs-6">. p/u: $${seleccion.preciounitario}</p>
                             <p class="card-text py-2 fs-6">. Cantidad: ${seleccion.cantidad} entradas</p>
                             <h5 class="card-title py-2 fw-bold fs-6">. Total: $${parseInt(seleccion.preciounitario) * parseInt(seleccion.cantidad)}</h5>
-                        </div>
-                        <hr>`
+                            <hr class="mt-5">
+                        </div>`
+
                     carritoProductos.appendChild(contenedorPrincipal)
 
                     const trashCan = contenedorPrincipal.querySelector(`#trash${seleccion.codigo}`)

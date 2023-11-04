@@ -8,6 +8,7 @@ let filterButton = document.getElementById("filterButton")
 
 /* Creo las variables que apuntan a los dropdown en HTML: */
 let dropdownMenuFechas = document.getElementById("dropdownMenuFechas")
+let dropdownFechasButton = document.getElementById("dropdownFechasButton")
 let dropdownMenuSectores = document.getElementById("dropdownMenuSectores")
 let dropdownMenuCantidad = document.getElementById("dropdownMenuCantidad")
 let dropdownSectores = document.getElementById("dropdownSectores")
@@ -52,42 +53,73 @@ let botonAgregarCompra = document.getElementById("botonAgregarCompra")
 let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
 
 /* Declaro las siguientes variables para que sean globales */
+let fechasFiltro = []
 let sectorLugar = ""
 let sectorPrecio = 0
+
+/* Evento botón de selección fecha */
+dropdownFechasButton.addEventListener("click", function () {
+
+    if (filterInput.value != "" && fechasFiltro.length != 0) {
+        console.log("Filtré algo existente")
+        llenarDropdownFechas(fechasFiltro)
+    } else {
+        console.log("Filtré algo inexistente")
+        llenarDropdownFechas(fechas)
+    }
+})
+
+/* Función para llenar el Dropdown de fechas con JavaScript: */
+function llenarDropdownFechas(arrayFechas) {
+
+    /* Reinicio el menu Fechas */
+    dropdownMenuFechas.innerHTML = ""
+
+    /* Recorro el array que quiero respecto a las fechas */
+    arrayFechas.forEach(function (fecha) {
+
+        let elemento = document.createElement("a")
+        elemento.classList.add("dropdown-item")
+
+        /* Reduzco la cantidad de caracteres del mes */
+        let mesAbreviado = fecha.mes.slice(0, 3)
+
+        /* Creo el template string "fechasTemplate" */
+        let fechasTemplate = `${mesAbreviado} ${fecha.dia} - ${fecha.pais}, ${fecha.provincia} - ${fecha.lugar}`
+        elemento.textContent = fechasTemplate
+
+        elemento.addEventListener("click", function () {
+
+            fechaRecital.value = fechasTemplate
+
+            if (dropdownSectores.classList.contains("show")) {
+            } else {
+                fechaRecital.classList.toggle("show")
+                dropdownSectores.classList.toggle("show")
+            }
+        })
+        dropdownMenuFechas.appendChild(elemento)
+    })
+}
 
 /* Event Listener para el search & filter */
 filterButton.addEventListener("click", function () {
 
     if (filterInput.value != "") {
-        console.log("Filtré")
+
+        fechasFiltro = fechas.filter((fecha) => fecha.mes.includes(filterInput.value.toUpperCase()))
+
+        if (fechasFiltro.length != 0) {
+            llenarDropdownFechas(fechasFiltro)
+        } else {
+            alert(filterInput.value + " no es un flitro válido")
+            filterInput.value = ""
+            llenarDropdownFechas(fechas)
+        }
+
     } else {
         console.log("No filtré")
     }
-})
-
-/* Llenar el Dropdown de fechas con JavaScript: */
-fechas.forEach(function (fecha) {
-    let elemento = document.createElement("a")
-    elemento.classList.add("dropdown-item")
-
-    /* Reduzco la cantidad de caracteres del mes */
-    let mesAbreviado = fecha.mes.slice(0, 3)
-
-    /* Creo el template string "fechasTemplate" */
-    let fechasTemplate = `${mesAbreviado} ${fecha.dia} - ${fecha.pais}, ${fecha.provincia} - ${fecha.lugar}`
-    elemento.textContent = fechasTemplate
-
-    elemento.addEventListener("click", function () {
-
-        fechaRecital.value = fechasTemplate
-
-        if (dropdownSectores.classList.contains("show")) {
-        } else {
-            fechaRecital.classList.toggle("show")
-            dropdownSectores.classList.toggle("show")
-        }
-    })
-    dropdownMenuFechas.appendChild(elemento)
 })
 
 /* Llenar el Dropdown de sectores con JavaScript: */
@@ -142,6 +174,7 @@ cantidad.forEach(function (cant) {
 
 /* Función que borra los datos seleccionados a la hora de comprar la entrada */
 function limpiarSeleccion() {
+    filterInput.value = ""
     fechaRecital.value = ""
     sectorRecital.value = ""
     entradasRecital.value = 0
