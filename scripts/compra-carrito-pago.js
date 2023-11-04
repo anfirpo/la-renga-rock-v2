@@ -44,44 +44,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     let contenedorPrincipal = document.createElement("div")
                     contenedorPrincipal.classList.add("container-fluid", "d-flex", "flex-wrap", "align-items-center", "my-3")
+                    contenedorPrincipal.innerHTML =
+                        `<h4 class="card-header col-11 fw-bold fs-6">${seleccion.fecha}</h4>
+                        <i id="trash${seleccion.codigo}" class="fa-regular fa-trash-can col-1 text-end pointer"></i>
+                        <div class="card-body">
+                            <h5 class="card-title fst-italic py-2 fs-6">. Sector: ${seleccion.sector}</h5>
+                            <p class="card-text py-2 fs-6">. p/u: $${seleccion.preciounitario}</p>
+                            <p class="card-text py-2 fs-6">. Cantidad: ${seleccion.cantidad} entradas</p>
+                            <h5 class="card-title py-2 fw-bold fs-6">. Total: $${parseInt(seleccion.preciounitario) * parseInt(seleccion.cantidad)}</h5>
+                        </div>
+                        <hr>`
                     carritoProductos.appendChild(contenedorPrincipal)
 
-                    let header = document.createElement("h4")
-                    header.classList.add("card-header", "col-11", "fw-bold", "fs-6")
-                    header.textContent = seleccion.fecha
-                    contenedorPrincipal.appendChild(header)
-
-                    let trashCan = document.createElement("i")
-                    trashCan.id = seleccion.codigo
-                    trashCan.classList.add("fa-regular", "fa-trash-can", "col-1", "text-end", "pointer")
-                    contenedorPrincipal.appendChild(trashCan)
-
-                    let contenedorBody = document.createElement("div")
-                    contenedorBody.classList.add("card-body")
-                    contenedorPrincipal.appendChild(contenedorBody)
-
-                    let sector = document.createElement("h5")
-                    sector.classList.add("card-title", "fst-italic", "py-2", "fs-6")
-                    sector.textContent = ". Sector: " + seleccion.sector
-                    contenedorBody.appendChild(sector)
-
-                    let precioUnitario = document.createElement("p")
-                    precioUnitario.classList.add("card-text", "py-2", "fs-6")
-                    precioUnitario.textContent = ". p/u: $" + seleccion.preciounitario
-                    contenedorBody.appendChild(precioUnitario)
-
-                    let cantidadEntradas = document.createElement("p")
-                    cantidadEntradas.classList.add("card-text", "py-2", "fs-6")
-                    cantidadEntradas.textContent = ". Cantidad: " + seleccion.cantidad + " entradas"
-                    contenedorBody.appendChild(cantidadEntradas)
-
-                    let precioParcialSeleccion = document.createElement("h5")
-                    precioParcialSeleccion.classList.add("card-title", "py-2", "fw-bold", "fs-6")
-                    precioParcialSeleccion.textContent = ". Total: $" + parseInt(seleccion.preciounitario) * parseInt(seleccion.cantidad)
-                    contenedorBody.appendChild(precioParcialSeleccion)
-
-                    let lineaHorizontal = document.createElement("hr")
-                    carritoProductos.appendChild(lineaHorizontal)
+                    const trashCan = contenedorPrincipal.querySelector(`#trash${seleccion.codigo}`)
 
                     /* Botón para borrar la selección */
                     trashCan.addEventListener("click", function () {

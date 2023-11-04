@@ -2,12 +2,9 @@
 /* ****************** COMPRA ENTRADAS ***************** */
 /* **************************************************** */
 
-/* Crear los Arrays en JavaScript: */
-let fechas = ["AGO 26 - BUENOS AIRES, ARGENTINA - ESTADIO TOMÁS ADOLFO DUCÓ", "SEP 12 - CÓRDOBA, ARGENTINA - ESTADIO MARIO ALBERTO KEMPES", "SEP 24 - MENDOZA, ARGENTINA - ESTADIO MALVINAS ARGENTINAS", "OCT 26 - TIERRA DEL FUEGO, ARGENTINA - HANGAR DEL VIEJO AEROPUERTO", "NOV 6 - BUENOS AIRES, ARGENTINA - ESTADIO LIBERTADORES DE AMÉRICA"];
-
-let sectores = ["PLATEA ALTA - $15000", "PLATEA BAJA - $20000", "POPULAR - $10000", "CAMPO - $12500", "CAMPO VIP - $25000"]
-
-let cantidad = [1, 2, 3, 4, 5]
+/* Creo las variables que apuntan a los filtros en HTML: */
+let filterInput = document.getElementById("filterInput")
+let filterButton = document.getElementById("filterButton")
 
 /* Creo las variables que apuntan a los dropdown en HTML: */
 let dropdownMenuFechas = document.getElementById("dropdownMenuFechas")
@@ -58,14 +55,31 @@ let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
 let sectorLugar = ""
 let sectorPrecio = 0
 
+/* Event Listener para el search & filter */
+filterButton.addEventListener("click", function () {
+
+    if (filterInput.value != "") {
+        console.log("Filtré")
+    } else {
+        console.log("No filtré")
+    }
+})
+
 /* Llenar el Dropdown de fechas con JavaScript: */
 fechas.forEach(function (fecha) {
     let elemento = document.createElement("a")
     elemento.classList.add("dropdown-item")
-    elemento.textContent = fecha
+
+    /* Reduzco la cantidad de caracteres del mes */
+    let mesAbreviado = fecha.mes.slice(0, 3)
+
+    /* Creo el template string "fechasTemplate" */
+    let fechasTemplate = `${mesAbreviado} ${fecha.dia} - ${fecha.pais}, ${fecha.provincia} - ${fecha.lugar}`
+    elemento.textContent = fechasTemplate
+
     elemento.addEventListener("click", function () {
 
-        fechaRecital.value = fecha
+        fechaRecital.value = fechasTemplate
 
         if (dropdownSectores.classList.contains("show")) {
         } else {
@@ -80,16 +94,17 @@ fechas.forEach(function (fecha) {
 sectores.forEach(function (sector) {
     let elemento = document.createElement("a")
     elemento.classList.add("dropdown-item")
-    elemento.textContent = sector
+
+    /* Creo el template string "sectoresTemplate" */
+    let sectoresTemplate = `${sector.sector} - $${sector.precio}`
+    elemento.textContent = sectoresTemplate
+
     elemento.addEventListener("click", function () {
 
-        sectorRecital.value = sector
+        sectorRecital.value = sectoresTemplate
 
-        let sectorSplitPrecio = sector.split("$")
-        let sectorSplitLugar = sector.split(" -")
-
-        sectorLugar = sectorSplitLugar[0]
-        sectorPrecio = parseInt(sectorSplitPrecio[1])
+        sectorLugar = sector.sector
+        sectorPrecio = parseInt(sector.precio)
 
         /* Hago la cuenta del total de compra de esta selección. Esta sentencia la tengo que escribir acá ya que, en el caso de haber elegido una opción para cada dropdown, si yo quisiera modificar luego un sector, sin modificar la cantidad de entradas a comprar, esta es la forma en que se actualizaría el total */
         totalRecitalValor.value = entradasRecital.value * sectorPrecio

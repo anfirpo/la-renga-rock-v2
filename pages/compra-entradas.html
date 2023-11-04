@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="../css/style.css">
 
     <!-- Scripts js -->
-    <script defer src="../scripts/compra-entradas.js" type="module"></script>
+    <script src="../scripts/let&const.js"></script>
+    <script defer src="../scripts/compra-entradas.js"></script>
 </head>
 
 <body>
@@ -31,6 +32,12 @@
     <main class="mainCarrito">
 
         <h2>Recitales</h2>
+
+        <div class="container-fluid column d-flex col-md-10 col-sm-12" role="search">
+            <input id="filterInput" class="form-control me-2" type="search"
+                placeholder="Filtrá mes (Ej: OCTUBRE) o provincia (Ej: BUENOS AIRES)" aria-label="Search">
+            <button id="filterButton" class="btn btn-secondary" type="submit">Filtrar</button>
+        </div>
 
         <div id="divSeleccionEntradas" class="container-fluid mb-3 col-md-10 col-sm-12 my-4">
 
