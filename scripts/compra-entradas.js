@@ -53,20 +53,41 @@ let botonAgregarCompra = document.getElementById("botonAgregarCompra")
 let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
 
 /* Declaro las siguientes variables para que sean globales */
-let fechasFiltro = []
+let fechasFiltroMes = []
+let fechasFiltroProvincia = []
 let sectorLugar = ""
 let sectorPrecio = 0
 
 /* Evento botón de selección fecha */
 dropdownFechasButton.addEventListener("click", function () {
 
-    if (filterInput.value != "" && fechasFiltro.length != 0) {
+    /* if (filterInput.value != "" && fechasFiltroMes.length != 0) {
         console.log("Filtré algo existente")
-        llenarDropdownFechas(fechasFiltro)
+        llenarDropdownFechas(fechasFiltroMes)
     } else {
         console.log("Filtré algo inexistente")
         llenarDropdownFechas(fechas)
+    } */
+
+
+    if (filterInput.value != "") {
+
+        if (fechasFiltroMes.length != 0) {
+            console.log("Filtré por mes")
+        } else if (fechasFiltroProvincia.length != 0) {
+            console.log("Filtré por provincia")
+        } else {
+            alert(filterInput.value + " no es un flitro válido")
+            filterInput.value = ""
+            llenarDropdownFechas(fechas)
+        }
+
+    } else {
+        console.log("No filtré")
+        llenarDropdownFechas(fechas)
     }
+
+
 })
 
 /* Función para llenar el Dropdown de fechas con JavaScript: */
@@ -107,10 +128,14 @@ filterButton.addEventListener("click", function () {
 
     if (filterInput.value != "") {
 
-        fechasFiltro = fechas.filter((fecha) => fecha.mes.includes(filterInput.value.toUpperCase()))
+        fechasFiltroMes = fechas.filter((fecha) => fecha.mes.includes(filterInput.value.toUpperCase()))
 
-        if (fechasFiltro.length != 0) {
-            llenarDropdownFechas(fechasFiltro)
+        fechasFiltroProvincia = fechas.filter((fecha) => fecha.provincia.includes(filterInput.value.toUpperCase()))
+
+        if (fechasFiltroMes.length != 0) {
+            llenarDropdownFechas(fechasFiltroMes)
+        } else if (fechasFiltroProvincia.length != 0) {
+            llenarDropdownFechas(fechasFiltroProvincia)
         } else {
             alert(filterInput.value + " no es un flitro válido")
             filterInput.value = ""
