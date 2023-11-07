@@ -58,36 +58,50 @@ let fechasFiltroProvincia = []
 let sectorLugar = ""
 let sectorPrecio = 0
 
+/* Alerta "faltan campos por completar" */
+function completarCampos() {
+    Swal.fire({
+        text: "Faltan seleccionar algunos campos",
+        icon: "warning",
+        showCancelButton: false,
+        confirmButtonText: "Ok",
+        allowOutsideClick: false
+    })
+}
+
+/* Alerta "filtro no válido" */
+function filtroNoValido() {
+    Swal.fire({
+        text: filterInput.value + " no es un flitro válido",
+        icon: "warning",
+        showCancelButton: false,
+        confirmButtonText: "Ok",
+        allowOutsideClick: false
+    }).then((result) => {
+        if (result.isConfirmed) {
+            /* Pongo el dropdown sin filtros */
+            filterInput.value = ""
+            limpiarSeleccion()
+            llenarDropdownFechas(fechas)
+        }
+    })
+}
+
 /* Evento botón de selección fecha */
 dropdownFechasButton.addEventListener("click", function () {
 
-    /* if (filterInput.value != "" && fechasFiltroMes.length != 0) {
-        console.log("Filtré algo existente")
-        llenarDropdownFechas(fechasFiltroMes)
-    } else {
-        console.log("Filtré algo inexistente")
-        llenarDropdownFechas(fechas)
-    } */
-
-
     if (filterInput.value != "") {
-
         if (fechasFiltroMes.length != 0) {
             console.log("Filtré por mes")
         } else if (fechasFiltroProvincia.length != 0) {
             console.log("Filtré por provincia")
         } else {
-            alert(filterInput.value + " no es un flitro válido")
-            filterInput.value = ""
-            llenarDropdownFechas(fechas)
+            filtroNoValido()
         }
-
     } else {
         console.log("No filtré")
         llenarDropdownFechas(fechas)
     }
-
-
 })
 
 /* Función para llenar el Dropdown de fechas con JavaScript: */
@@ -137,9 +151,7 @@ filterButton.addEventListener("click", function () {
         } else if (fechasFiltroProvincia.length != 0) {
             llenarDropdownFechas(fechasFiltroProvincia)
         } else {
-            alert(filterInput.value + " no es un flitro válido")
-            filterInput.value = ""
-            llenarDropdownFechas(fechas)
+            filtroNoValido()
         }
 
     } else {
@@ -244,7 +256,7 @@ botonAgregarCompra.addEventListener("click", function () {
 
         limpiarSeleccion()
     } else {
-        alert("Aún quedan campos sin seleccionar")
+        completarCampos()
     }
 })
 
