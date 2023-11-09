@@ -27,7 +27,6 @@ let totalRecitalTexto = document.getElementById("totalRecitalTexto")
 let totalRecitalValor = document.getElementById("totalRecitalValor")
 totalRecitalValor.value = 0
 
-
 /* Inicializo el array "carritoCompra". Recuperar de localStorage. Despliego todos los productos agregados al carrito con JavaScript: */
 
 let carritoCompra = []
@@ -60,31 +59,48 @@ let sectorPrecio = 0
 
 /* Alerta "faltan campos por completar" */
 function completarCampos() {
-    Swal.fire({
-        text: "Faltan seleccionar algunos campos",
-        icon: "warning",
-        showCancelButton: false,
-        confirmButtonText: "Ok",
-        allowOutsideClick: false
-    })
+    Toastify({
+        text: "Falta seleccionar algunos datos",
+        offset: {
+            y: 10
+        },
+        duration: 3000,
+        gravity: "bottom",
+        className: "toastFaltanDatos",
+        positionLeft: false,
+        style: {
+            color: "black",
+            background: "#FFC300",
+            minWidth: "293px",
+            height: "auto"
+        },
+    }).showToast()
 }
 
 /* Alerta "filtro no válido" */
 function filtroNoValido() {
-    Swal.fire({
-        text: filterInput.value + " no es un flitro válido",
-        icon: "warning",
-        showCancelButton: false,
-        confirmButtonText: "Ok",
-        allowOutsideClick: false
-    }).then((result) => {
-        if (result.isConfirmed) {
-            /* Pongo el dropdown sin filtros */
-            filterInput.value = ""
-            limpiarSeleccion()
-            llenarDropdownFechas(fechas)
+    Toastify({
+        text: "´" + filterInput.value + "´" + " no es un flitro válido",
+        offset: {
+            y: 10
+        },
+        duration: 3000,
+        gravity: "bottom",
+        className: "toastFiltroInvalido",
+        positionLeft: false,
+        style: {
+            color: "black",
+            background: "#FFC300",
+            width: "auto",
+            minWidth: "300px",
+            height: "auto"
         }
-    })
+    }).showToast()
+
+    /* Pongo el dropdown sin filtros */
+    filterInput.value = ""
+    limpiarSeleccion()
+    llenarDropdownFechas(fechas)
 }
 
 /* Evento botón de selección fecha */
