@@ -28,3 +28,26 @@ const fechas = [
 const sectores = [{ sector: "PLATEA ALTA", precio: 15000 }, { sector: "PLATEA BAJA", precio: 20000 }, { sector: "POPULAR", precio: 10000 }, { sector: "CAMPO", precio: 12500 }, { sector: "CAMPO VIP", precio: 25000 }]
 
 const cantidad = [1, 2, 3, 4, 5]
+
+const productos = [
+    { id: 1, nombre: 'Notebook i7', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 1000, categoria: 'Portátiles' },
+    { id: 2, nombre: 'Smartphone', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 800, categoria: 'Portátiles' },
+    { id: 3, nombre: 'Smartwatch', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 200, categoria: 'Portátiles' },
+    { id: 4, nombre: 'Micrófono BT', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 50, categoria: 'Audio' },
+    { id: 5, nombre: 'Bafles WiFi', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 80, categoria: 'Audio' },
+    { id: 6, nombre: 'Auriculares BT', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 60, categoria: 'Audio' },
+    { id: 7, nombre: 'Smart TV', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 600, categoria: 'Televisores' },
+    { id: 8, nombre: 'Smart-Cam', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 400, categoria: 'Video' },
+    { id: 9, nombre: 'All In One', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 900, categoria: 'Desktop' },
+    { id: 10, nombre: 'Play Estéishon', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 300, categoria: 'Videojuegos' },
+    { id: 11, nombre: 'Notebook gamer', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 1000, categoria: 'Portátiles' },
+    { id: 12, nombre: 'iPhone 14', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 800, categoria: 'Portátiles' },
+    { id: 13, nombre: 'Apple watch', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 200, categoria: 'Portátiles' },
+    { id: 14, nombre: 'Micrófono', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 50, categoria: 'Audio' },
+    { id: 15, nombre: 'Bafles potenciados', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 80, categoria: 'Audio' },
+    { id: 16, nombre: 'Auriculares', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 60, categoria: 'Audio' },
+    { id: 17, nombre: 'Google TV', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 600, categoria: 'Televisores' },
+    { id: 18, nombre: 'Cámara fotográfica', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 400, categoria: 'Video' },
+    { id: 19, nombre: 'Monitor 32', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 900, categoria: 'Desktop' },
+    { id: 20, nombre: 'Nintendo Wii', imagen: '../img/merchandising/billeteras/billetera-1.jpg', precio: 300, categoria: 'Videojuegos' },
+]
