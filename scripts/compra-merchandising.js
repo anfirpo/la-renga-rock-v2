@@ -1,8 +1,14 @@
 const carrito = []
+const cantidadPorCategoria = {}
 const contenedor = document.querySelector("div.container#divcontenedor")
 const btnCarrito = document.querySelector("img#logo")
 const inputBuscar = document.querySelector("input#inputBusqueda")
+const menuMerchandising = document.querySelectorAll("#menuMerchandising li span")
 
+/* Cantidad de productos por categoría */
+
+
+/* Sección para productos en tarjetas */
 function crearCardError() {
     return `<div class="div-card-error">
                 <div class="imagen-error">🤦🏻‍♂️</div>
@@ -12,12 +18,13 @@ function crearCardError() {
 }
 
 function crearCardHTML(producto) {
-    return `<div class="card" style="width: 18rem;">
+    return `<div class="card my-3" style="width: 20rem">
                 <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
-                <div class="card-body">
+                <hr>
+                <div class="card-body text-center">
                     <h5 class="card-title">${producto.nombre}</h5>
                     <p class="card-text">$ ${producto.precio}</p>
-                    <button id="${producto.id}" class="add-to-cart">Agregar</button>
+                    <button id="${producto.id}" class="add-to-cart btn btn-primary">Agregar</button>
                 </div>
             </div>`
 }

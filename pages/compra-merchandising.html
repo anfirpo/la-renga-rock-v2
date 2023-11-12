@@ -35,18 +35,15 @@
 
         <h2>MERCHANDISING</h2>
 
-        <div class="container-fluid column d-flex col-md-10 col-sm-12" role="search">
-            <input id="filterInput" class="form-control me-2" type="search" placeholder="Filtrá por mes o provincia"
+        <div class="container-fluid column d-flex col-md-10 col-sm-12 my-3" role="search">
+            <input id="filterInput" class="form-control me-2" type="search" placeholder="Ingresá el producto a buscar"
                 aria-label="Search">
             <button id="filterButton" class="btn btn-secondary" type="submit">Filtrar</button>
         </div>
 
-        <input type="search" name="" id="inputBusqueda" placeholder="Ingresa el producto a buscar."
-            class="container-fluid column d-flex col-md-10 col-sm-12">
-
-        <div class="container-fluid row">
-            <div class="container-fluid col-md-4 col-sm-12">
-                <ul class="list-group">
+        <div class="container-fluid row pb-5">
+            <div class="container-fluid col-lg-4 col-md-6 col-sm-12 my-3">
+                <ul id="menuMerchandising" class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Todos los productos
                         <span class="badge bg-primary rounded-pill">14</span>
@@ -85,7 +82,8 @@
                     </li>
                 </ul>
             </div>
-            <div class="container-fluid container row col-md-8 col-sm-12" id="divcontenedor">
+            <div class="container-fluid container row d-flex justify-content-around col-lg-8 col-md-6 col-sm-12"
+                id="divcontenedor">
 
             </div>
         </div>
