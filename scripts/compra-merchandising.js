@@ -2,7 +2,8 @@ const carrito = []
 const cantidadPorCategoria = {}
 const contenedor = document.querySelector("div.container#divcontenedor")
 const btnCarrito = document.querySelector("img#logo")
-const inputBuscar = document.querySelector("input#inputBusqueda")
+const filterInputMerchandising = document.querySelector("#filterInputMerchandising")
+const filterButtonMerchandising = document.querySelector("#filterButtonMerchandising")
 const menuMerchandising = document.querySelector("#menuMerchandising")
 let allProducts = document.querySelector("#allProducts")
 
@@ -25,13 +26,31 @@ function crearCategoria(objeto, clave) {
     return `<li class="list-group-item d-flex justify-content-between align-items-center">
                 ${clave}
                 <span class="badge bg-primary rounded-pill">${objeto[clave]}</span>
-                </li>`
+            </li>`
 }
 
 /* Creo todas las categorías recorriendo el objeto cantidadPorCategoria*/
 for (let categoria in cantidadPorCategoria) {
     menuMerchandising.innerHTML += crearCategoria(cantidadPorCategoria, categoria)
 }
+
+/* Filtro por categorías */
+const listaCategorias = document.querySelectorAll("#menuMerchandising li")
+listaCategorias.forEach((cat) => {
+    cat.addEventListener("click", () => {
+        if (cat.textContent.includes("todos")) {
+            console.log("Toqué todos")
+            filterInputMerchandising.value = ""
+            cargarProductos(productos)
+        }
+        else {
+            filterInputMerchandising.value = ""
+            let textoBusqueda = cat.firstChild.textContent.trim().toLowerCase()
+            let resultado = productos.filter((producto) => producto.categoria.toLowerCase().includes(textoBusqueda))
+            cargarProductos(resultado)
+        }
+    })
+})
 
 /* Sección para productos en tarjetas */
 function crearCardError() {
@@ -47,8 +66,8 @@ function crearCardHTML(producto) {
                 <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
                 <hr>
                 <div class="card-body text-center">
-                    <h5 class="card-title">${producto.nombre}</h5>
-                    <p class="card-text">$ ${producto.precio}</p>
+                    <h5 class="card-title fs-5">${producto.nombre}</h5>
+                    <p class="card-text fs-4">$ ${producto.precio}</p>
                     <button id="${producto.id}" class="add-to-cart btn btn-primary">Agregar</button>
                 </div>
             </div>`
@@ -79,21 +98,24 @@ function activarClickEnBotones() {
 
 cargarProductos(productos)
 
-// método Add Event Listener
-
-/* btnCarrito.addEventListener("click", () => {
-    alert("Hiciste click en el carrito.")
-})
-
-btnCarrito.addEventListener("mousemove", () => {
-    btnCarrito.title = "Carrito sin productos"
-})
-
-inputBuscar.addEventListener("search", () => {
-    let textoAbuscar = inputBuscar.value.trim().toLowerCase()
-    let resultado = productos.filter((producto) => producto.nombre.toLowerCase().includes(textoAbuscar))
-    console.table(resultado)
+/* Función filtro */
+function filtroProducto() {
+    let textoBusqueda = filterInputMerchandising.value.trim().toLowerCase()
+    let resultado = productos.filter((producto) => producto.nombre.toLowerCase().includes(textoBusqueda))
     cargarProductos(resultado)
+}
 
-}) */
+/* Filtrado productos por "Enter" */
+filterInputMerchandising.addEventListener("search", () => {
+    filtroProducto()
+})
 
+/* Filtrado productos por "Button" */
+filterButtonMerchandising.addEventListener("click", function () {
+
+    if (filterInputMerchandising.value != "") {
+        filtroProducto()
+    } else {
+        console.log("No filtré")
+    }
+})
