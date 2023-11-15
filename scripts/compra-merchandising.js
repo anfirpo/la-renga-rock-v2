@@ -23,7 +23,7 @@ productos.forEach(producto => {
 
 /* Sección para crear cada categoría en HTML */
 function crearCategoria(objeto, clave) {
-    return `<li class="list-group-item d-flex justify-content-between align-items-center">
+    return `<li class="list-group-item d-flex justify-content-between align-items-center pointer">
                 ${clave}
                 <span class="badge bg-primary rounded-pill">${objeto[clave]}</span>
             </li>`
@@ -68,7 +68,7 @@ function crearCardHTML(producto) {
                 <div class="card-body text-center">
                     <h5 class="card-title fs-5">${producto.nombre}</h5>
                     <p class="card-text fs-4">$ ${producto.precio}</p>
-                    <button id="${producto.id}" class="add-to-cart btn btn-primary">Agregar</button>
+                    <button id="${producto.id}" class="add-to-cart btn btn-primary mt-2 fs-5">Agregar</button>
                 </div>
             </div>`
 }
