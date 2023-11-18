@@ -158,10 +158,14 @@ function agregarProductoToast() {
 function actualizarCantidadImagen() {
     if (carritoMerchandising.length == 0) {
         logoCarritoMerch.classList.remove("mx-5")
-        console.log("entre if")
     } else {
+        if (logoCarritoMerch.classList.contains("mx-5")) {
+
+        } else {
+            logoCarritoMerch.classList.add("mx-5")
+        }
+
         cantCarritoMerch.classList.remove("visually-hidden")
         cantCarritoMerch.textContent = parseInt(carritoMerchandising.length)
-        console.log("entre else")
     }
 }

@@ -1,23 +1,23 @@
 /* ************************************* */
-/* ******** compra-carrito-pago ******** */
+/* ***** compra-Merchandising-pago ***** */
 /* ************************************* */
 
 /* Inicializo variables parte del carrito */
-let descartarCarrito = document.getElementById("descartarCarrito")
-let carritoProductos = document.getElementById("carritoProductos")
-let carritoResumen = document.getElementById("carritoResumen")
-let subtotalResumen = document.getElementById("subtotalResumen")
-let costoServicioResumen = document.getElementById("costoServicioResumen")
-let totalResumen = document.getElementById("totalResumen")
-let irAlPago = document.getElementById("irAlPago")
-let subtotalResumenValor = 0
-let costoServicioResumenValor = 0
+let descartarCarritoMerch = document.getElementById("descartarCarritoMerch")
+let carritoProductosMerch = document.getElementById("carritoProductosMerch")
+let carritoResumenMerch = document.getElementById("carritoResumenMerch")
+let subtotalResumenMerch = document.getElementById("subtotalResumenMerch")
+let costoServicioResumenMerch = document.getElementById("costoServicioResumenMerch")
+let totalResumenMerch = document.getElementById("totalResumenMerch")
+let irAlPagoMerch = document.getElementById("irAlPagoMerch")
+let subtotalResumenValorMerch = 0
+let costoServicioResumenValorMerch = 0
 
 /* Inicializo variables parte del pago */
-let formPagoEntradas = document.getElementById("formPagoEntradas")
+let formPagoEntradasMerch = document.getElementById("formPagoEntradasMerch")
 
 /* Recuperar de localStorage. Despliego todos los productos agregados al carrito con JavaScript: */
-let carritoCompra = JSON.parse(localStorage.getItem("carritoCompra"))
+let carritoMerchandising = JSON.parse(localStorage.getItem("carritoMerchandising"))
 
 /* Alerta "carrito de compra vacío" */
 function volverCarritoVacio() {
@@ -30,13 +30,13 @@ function volverCarritoVacio() {
     }).then((result) => {
         if (result.isConfirmed) {
             /* Redirecciono a compra-entradas después de aceptar */
-            window.location.href = "compra-entradas.html"
+            window.location.href = "compra-merchandising.html"
         }
     })
 }
 
 /* Si el carrito está vacío, me devuelve a la página de selección */
-if (carritoCompra && carritoCompra.length != 0) {
+if (carritoMerchandising && carritoMerchandising.length != 0) {
 
     let n = 0
 
@@ -49,51 +49,51 @@ if (carritoCompra && carritoCompra.length != 0) {
             /* Le pongo código a las selecciones */
             let codigoInicial = 1;
 
-            for (let i = 0; i < carritoCompra.length; i++) {
-                carritoCompra[i].codigo = codigoInicial;
+            for (let i = 0; i < carritoMerchandising.length; i++) {
+                carritoMerchandising[i].codigo = codigoInicial;
                 codigoInicial++;
             }
 
-            carritoCompra.forEach(function (seleccion) {
+            carritoMerchandising.forEach(function (seleccion) {
 
-                let contenedorPrincipal = document.createElement("div")
-                contenedorPrincipal.classList.add("container-fluid", "d-flex", "flex-wrap", "align-items-center", "my-3")
-                contenedorPrincipal.innerHTML =
-                    `<h4 class="card-header col-11 fw-bold fs-6">${seleccion.fecha}</h4>
+                let contenedorPrincipalMerch = document.createElement("div")
+                contenedorPrincipalMerch.classList.add("container-fluid", "d-flex", "flex-wrap", "align-items-center", "my-3")
+                contenedorPrincipalMerch.innerHTML =
+                    `<h4 class="card-header col-11 fw-bold fs-6">${seleccion.nombre}</h4>
                         <i id="trash${seleccion.codigo}" class="fa-regular fa-trash-can col-1 text-end pointer"></i>
                         <div class="card-body">
-                            <h5 class="card-title fst-italic py-2 fs-6">. Sector: ${seleccion.sector}</h5>
-                            <p class="card-text py-2 fs-6">. p/u: $${seleccion.preciounitario}</p>
-                            <p class="card-text py-2 fs-6">. Cantidad: ${seleccion.cantidad} entradas</p>
-                            <h5 class="card-title py-2 fw-bold fs-6">. Total: $${parseInt(seleccion.preciounitario) * parseInt(seleccion.cantidad)}</h5>
+                            <h5 class="card-title fst-italic py-2 fs-6">. Categoria: ${seleccion.categoria}</h5>
+                            <p class="card-text py-2 fs-6">. p/u: $${seleccion.precio}</p>
+                            <p class="card-text py-2 fs-6">. Cantidad: 3 unidades</p>
+                            <h5 class="card-title py-2 fw-bold fs-6">. Total: $${parseInt(seleccion.precio) * parseInt(3)}</h5>
                             <hr class="mt-5">
                         </div>`
 
-                carritoProductos.appendChild(contenedorPrincipal)
+                carritoProductosMerch.appendChild(contenedorPrincipalMerch)
 
-                const trashCan = contenedorPrincipal.querySelector(`#trash${seleccion.codigo}`)
+                const trashCan = contenedorPrincipalMerch.querySelector(`#trash${seleccion.codigo}`)
 
                 /* Botón para borrar la selección */
                 trashCan.addEventListener("click", function () {
-                    carritoCompra.splice(trashCan.id - 1, 1)
+                    carritoMerchandising.splice(trashCan.id - 1, 1)
 
                     /* Guardar en localStorage */
-                    localStorage.setItem("carritoCompra", JSON.stringify(carritoCompra))
+                    localStorage.setItem("carritoMerchandising", JSON.stringify(carritoMerchandising))
 
                     /* Limpio el carrito y el resumen */
-                    carritoProductos.innerHTML = ""
+                    carritoProductosMerch.innerHTML = ""
 
                     /* Limpio el carrito */
-                    carritoResumen.innerHTML = ""
+                    carritoResumenMerch.innerHTML = ""
 
                     /* Actualizo el carrito */
                     n = 0
                     actualizarCarrito()
 
                     /* Escondo de nuevo el método de pago si estaba desplegado. Si no quedan producto, regreso a compra entradas */
-                    if (carritoCompra && carritoCompra.length != 0) {
-                        if (formPagoEntradas.classList.contains("show")) {
-                            formPagoEntradas.classList.toggle("show")
+                    if (carritoMerchandising && carritoMerchandising.length != 0) {
+                        if (formPagoEntradasMerch.classList.contains("show")) {
+                            formPagoEntradasMerch.classList.toggle("show")
                         } else { }
                     } else {
                         volverCarritoVacio()
@@ -103,29 +103,29 @@ if (carritoCompra && carritoCompra.length != 0) {
             })
 
             /* Despliego el resumen del carrito con JavaScript: */
-            carritoCompra.forEach(function (seleccion) {
+            carritoMerchandising.forEach(function (seleccion) {
 
-                let fechaResumen = document.createElement("p")
-                fechaResumen.classList.add("card-text", "mb-5", "mt-3")
-                fechaResumen.textContent = seleccion.fecha
-                carritoResumen.appendChild(fechaResumen)
+                let nombreProducto = document.createElement("p")
+                nombreProducto.classList.add("card-text", "mb-5", "mt-3")
+                nombreProducto.textContent = ". 3 x " + seleccion.nombre
+                carritoResumenMerch.appendChild(nombreProducto)
 
-                /* Obtengo el primer hijo del div carritoResumen */
-                let primerElemento = carritoResumen.firstChild
+                /* Obtengo el primer hijo del div carritoResumenMerch */
+                let primerElemento = carritoResumenMerch.firstChild
 
                 /* Inserto fechaResumen antes del primer elemento */
-                carritoResumen.insertBefore(fechaResumen, primerElemento)
+                carritoResumenMerch.insertBefore(nombreProducto, primerElemento)
 
             })
 
             /* Calculo Subtotal, coste de servicio, y total: */
-            subtotalResumenValor = carritoCompra.reduce((total, producto) => total + producto.preciototal, 0)
-            subtotalResumen.textContent = "Subtotal: $" + subtotalResumenValor
+            subtotalResumenValorMerch = carritoMerchandising.reduce((total, producto) => total + (producto.precio * 3), 0)
+            subtotalResumenMerch.textContent = "Subtotal: $" + subtotalResumenValorMerch
 
-            costoServicioResumenValor = parseInt(((subtotalResumenValor * 3) / 100) * carritoCompra.length)
-            costoServicioResumen.textContent = "Costo del servicio: $" + costoServicioResumenValor
+            costoServicioResumenValorMerch = parseInt(((subtotalResumenValorMerch * 3) / 100) * carritoMerchandising.length)
+            costoServicioResumenMerch.textContent = "Costo del servicio: $" + costoServicioResumenValorMerch
 
-            totalResumen.textContent = "Total: $" + (subtotalResumenValor + costoServicioResumenValor)
+            totalResumenMerch.textContent = "Total: $" + (subtotalResumenValorMerch + costoServicioResumenValorMerch)
 
         }
 
@@ -133,26 +133,26 @@ if (carritoCompra && carritoCompra.length != 0) {
     }
 
     /* Función para limpiar el carrito */
-    descartarCarrito.addEventListener("click", function () {
+    descartarCarritoMerch.addEventListener("click", function () {
 
-        carritoCompra.length = 0
+        carritoMerchandising.length = 0
 
         /* Guardar en localStorage */
-        localStorage.setItem("carritoCompra", JSON.stringify(carritoCompra))
+        localStorage.setItem("carritoMerchandising", JSON.stringify(carritoMerchandising))
 
         /* Limpio el carrito y el resumen */
-        carritoProductos.innerHTML = ""
+        carritoProductosMerch.innerHTML = ""
 
         /* Limpio el carrito */
-        carritoResumen.innerHTML = ""
+        carritoResumenMerch.innerHTML = ""
 
         /* Actualizo el carrito */
         n = 0
 
         /* Escondo de nuevo el método de pago si estaba desplegado. Si no quedan producto, regreso a compra entradas */
-        if (carritoCompra && carritoCompra.length != 0) {
-            if (formPagoEntradas.classList.contains("show")) {
-                formPagoEntradas.classList.toggle("show")
+        if (carritoMerchandising && carritoMerchandising.length != 0) {
+            if (formPagoEntradasMerch.classList.contains("show")) {
+                formPagoEntradasMerch.classList.toggle("show")
             } else { }
         } else {
             volverCarritoVacio()
@@ -160,12 +160,12 @@ if (carritoCompra && carritoCompra.length != 0) {
     })
 
     /* Listener para ir al método y procesamiento de pago: */
-    irAlPago.addEventListener("click", function () {
+    irAlPagoMerch.addEventListener("click", function () {
 
-        if (carritoCompra.length != 0) {
-            if (formPagoEntradas.classList.contains("show")) {
+        if (carritoMerchandising.length != 0) {
+            if (formPagoEntradasMerch.classList.contains("show")) {
             } else {
-                formPagoEntradas.classList.toggle("show")
+                formPagoEntradasMerch.classList.toggle("show")
             }
         } else {
             volverCarritoVacio()
@@ -173,7 +173,7 @@ if (carritoCompra && carritoCompra.length != 0) {
     })
 
     /* Uso el listener para decirle al botón a qué página quiero que me redirija */
-    document.getElementById("formularioPago").addEventListener("submit", function (event) {
+    document.getElementById("formularioPagoMerch").addEventListener("submit", function (event) {
         /* Previene el comportamiento por defecto de envío del formulario */
         event.preventDefault()
 
