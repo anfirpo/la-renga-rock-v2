@@ -181,6 +181,9 @@ if (carritoCompra && carritoCompra.length != 0) {
         /* Previene el comportamiento por defecto de envío del formulario */
         event.preventDefault()
 
+        /* Repliego el form de pago */
+        formPagoEntradas.classList.toggle("show")
+
         /* Después de la validación, redirige a la página deseada */
         window.location.href = "compra-exitosa.html"
     })
