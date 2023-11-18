@@ -2,6 +2,8 @@
 /* ******************* COMPRA EXITOSA ***************** */
 /* **************************************************** */
 
+let loginToken = JSON.parse(localStorage.getItem("loginToken"))
+
 if (loginToken == "entradas") {
 
     localStorage.removeItem("loginToken")
