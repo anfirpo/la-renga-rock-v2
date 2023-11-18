@@ -17,7 +17,11 @@ let costoServicioResumenValor = 0
 let formPagoEntradas = document.getElementById("formPagoEntradas")
 
 /* Recuperar de localStorage. Despliego todos los productos agregados al carrito con JavaScript: */
-let carritoCompra = JSON.parse(localStorage.getItem("carritoCompra"))
+let carritoCompra = []
+
+if (localStorage.getItem("carritoCompra")) {
+    carritoCompra = JSON.parse(localStorage.getItem("carritoCompra"))
+} else { }
 
 /* Alerta "carrito de compra vacío" */
 function volverCarritoVacio() {
