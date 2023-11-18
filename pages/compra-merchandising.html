@@ -26,9 +26,21 @@
         <div class="container-fluid">
             <a class="navbar-brand nav-link" href="../index.html"><img src="../img/la-renga.png" alt="Logo de La Renga"
                     class="logo"></a>
-            <a class="navbar-brand nav-link" href="compra-carrito-pago.html"><i
-                    class="fa-solid fa-cart-shopping"></i></a>
+            <a id="logoCarritoMerch" class="navbar-brand nav-link mx-5" href="compra-merchandising-pago.html">
+                <i class="fa-solid fa-cart-shopping position-relative"></i>
+                <span id="cantCarritoMerch"
+                    class="visually-hidden position-absolute translate-middle badge rounded-pill bg-danger mx-3"></span>
+            </a>
         </div>
+
+        <!-- <button type="button" class="btn btn-primary position-relative">
+            Inbox
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                99+
+                <span class="visually-hidden">unread messages</span>
+            </span>
+        </button> -->
+
     </header>
 
     <main class="mainCarrito">
@@ -52,7 +64,7 @@
             </div>
             <div class="container-fluid container row d-flex justify-content-around col-lg-8 col-md-6 col-sm-12"
                 id="divcontenedor">
-
+                <!-- Acá van todas las cards -->
             </div>
         </div>
     </main>

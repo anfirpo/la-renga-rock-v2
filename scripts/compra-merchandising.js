@@ -1,4 +1,3 @@
-const carrito = []
 const cantidadPorCategoria = {}
 const contenedor = document.querySelector("div.container#divcontenedor")
 const btnCarrito = document.querySelector("img#logo")
@@ -6,6 +5,16 @@ const filterInputMerchandising = document.querySelector("#filterInputMerchandisi
 const filterButtonMerchandising = document.querySelector("#filterButtonMerchandising")
 const menuMerchandising = document.querySelector("#menuMerchandising")
 let allProducts = document.querySelector("#allProducts")
+const logoCarritoMerch = document.querySelector("#logoCarritoMerch")
+const cantCarritoMerch = document.querySelector("#cantCarritoMerch")
+
+/* Inicializo el array "carritoCompra". Recuperar de localStorage. Despliego todos los productos agregados al carrito con JavaScript: */
+
+let carritoMerchandising = []
+
+if (localStorage.getItem("carritoMerchandising")) {
+    carritoMerchandising = JSON.parse(localStorage.getItem("carritoMerchandising"))
+} else { }
 
 /* Cantidad de productos que vendo */
 allProducts.textContent = productos.length
@@ -87,16 +96,23 @@ function activarClickEnBotones() {
     const botonesAgregar = document.querySelectorAll("button.add-to-cart")
     botonesAgregar.forEach((boton) => { // e, ev, evt, event
         boton.addEventListener("click", (e) => {
+
             const id = parseInt(e.target.id)
             const productoSeleccionado = productos.find((producto) => producto.id === id)
-            carrito.push(productoSeleccionado)
-            console.table(carrito)
+            carritoMerchandising.push(productoSeleccionado)
+            console.table(carritoMerchandising)
+
+            localStorage.setItem("carritoMerchandising", JSON.stringify(carritoMerchandising))
+
+            actualizarCantidadImagen()
+            agregarProductoToast()
         })
     })
 
 }
 
 cargarProductos(productos)
+actualizarCantidadImagen()
 
 /* Función filtro */
 function filtroProducto() {
@@ -119,3 +135,33 @@ filterButtonMerchandising.addEventListener("click", function () {
         console.log("No filtré")
     }
 })
+
+/* Toast y Q productos en carrito */
+function agregarProductoToast() {
+    Toastify({
+        text: "¡Producto agregado!",
+        offset: {
+            y: 10
+        },
+        duration: 3000,
+        gravity: "bottom",
+        positionLeft: false,
+        style: {
+            color: "black",
+            background: "#98E662",
+            minWidth: "210px",
+            height: "auto"
+        },
+    }).showToast()
+}
+
+function actualizarCantidadImagen() {
+    if (carritoMerchandising.length == 0) {
+        logoCarritoMerch.classList.remove("mx-5")
+        console.log("entre if")
+    } else {
+        cantCarritoMerch.classList.remove("visually-hidden")
+        cantCarritoMerch.textContent = parseInt(carritoMerchandising.length)
+        console.log("entre else")
+    }
+}
