@@ -82,7 +82,11 @@ if (carritoMerchandising && carritoMerchandising.length != 0) {
 
                 /* Botón para borrar la selección */
                 trashCan.addEventListener("click", function () {
-                    carritoMerchandising.splice(trashCan.id - 1, 1)
+
+                    let trashCanId = trashCan.id
+                    let trashNumero = parseInt(trashCanId.replace("trash", ""))
+
+                    carritoMerchandising.splice(trashNumero - 1, 1)
 
                     /* Guardar en localStorage */
                     localStorage.setItem("carritoMerchandising", JSON.stringify(carritoMerchandising))

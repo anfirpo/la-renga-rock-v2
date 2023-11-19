@@ -85,7 +85,11 @@ if (carritoCompra && carritoCompra.length != 0) {
 
                 /* Botón para borrar la selección */
                 trashCan.addEventListener("click", function () {
-                    carritoCompra.splice(trashCan.id - 1, 1)
+
+                    let trashCanId = trashCan.id
+                    let trashNumero = parseInt(trashCanId.replace("trash", ""))
+
+                    carritoCompra.splice(trashNumero - 1, 1)
 
                     /* Guardar en localStorage */
                     localStorage.setItem("carritoCompra", JSON.stringify(carritoCompra))
@@ -197,5 +201,3 @@ if (carritoCompra && carritoCompra.length != 0) {
 } else {
     volverCarritoVacio()
 }
-
-

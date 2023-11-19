@@ -100,7 +100,6 @@ function activarClickEnBotones() {
             const id = parseInt(e.target.id)
             const productoSeleccionado = productos.find((producto) => producto.id === id)
             carritoMerchandising.push(productoSeleccionado)
-            console.table(carritoMerchandising)
 
             localStorage.setItem("carritoMerchandising", JSON.stringify(carritoMerchandising))
 
