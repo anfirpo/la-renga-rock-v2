@@ -67,14 +67,18 @@ if (carritoMerchandising && carritoMerchandising.length != 0) {
                 contenedorPrincipalMerch.classList.add("container-fluid", "d-flex", "flex-wrap", "align-items-center", "my-3")
                 contenedorPrincipalMerch.innerHTML =
                     `<h4 class="card-header col-11 fw-bold fs-6">${seleccion.nombre}</h4>
-                        <i id="trash${seleccion.codigo}" class="fa-regular fa-trash-can col-1 text-end pointer"></i>
-                        <div class="card-body">
+                    <i id="trash${seleccion.codigo}" class="fa-regular fa-trash-can col-1 text-end pointer"></i>
+                    <div class="card-body container-fluid d-flex flex-wrap">
+                        <div class="col-md-10 col-sm-12">
                             <h5 class="card-title fst-italic py-2 fs-6">. Categoria: ${seleccion.categoria}</h5>
                             <p class="card-text py-2 fs-6">. p/u: $${seleccion.precio}</p>
                             <p class="card-text py-2 fs-6">. Cantidad: 3 unidades</p>
                             <h5 class="card-title py-2 fw-bold fs-6">. Total: $${parseInt(seleccion.precio) * parseInt(3)}</h5>
-                            <hr class="mt-5">
-                        </div>`
+                        </div>
+                        <div class="col-md-2 col-sm-12">
+                            <img src="${seleccion.imagen}" class="card-img-top mb-5 mt-3" alt="${seleccion.nombre}">
+                        </div>
+                    </div>`
 
                 carritoProductosMerch.appendChild(contenedorPrincipalMerch)
 
