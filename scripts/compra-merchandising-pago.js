@@ -35,6 +35,13 @@ function volverCarritoVacio() {
     })
 }
 
+/* Si el "loginToken" no existe, te manda a la página de inicio" */
+if (localStorage.getItem("loginToken")) {
+} else {
+    window.location.href = "../index.html"
+}
+
+
 /* Si el carrito está vacío, me devuelve a la página de selección */
 if (carritoMerchandising && carritoMerchandising.length != 0) {
 

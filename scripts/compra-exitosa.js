@@ -17,5 +17,6 @@ if (loginToken == "entradas") {
 } else {
 
     console.log("Surgió un error poco común")
+    window.location.href = "../index.html"
 
 }
