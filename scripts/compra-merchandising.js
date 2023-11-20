@@ -77,7 +77,12 @@ function crearCardHTML(producto) {
                 <div class="card-body text-center">
                     <h5 class="card-title fs-5">${producto.nombre}</h5>
                     <p class="card-text fs-4">$ ${producto.precio}</p>
-                    <button id="${producto.id}" class="add-to-cart btn btn-primary mt-2 fs-5">Agregar</button>
+                    <div class="input-group mb-3 d-flex justify-content-center">
+                        <button id="restar-${producto.id}" class="restar btn btn-secondary fs-5">-</button>
+                        <input id="cantidad-${producto.id}" type="number" value="0" min="0" class="cantidadRequerida form-control text-center fs-5" style="max-width: 70px" disabled>
+                        <button id="sumar-${producto.id}" class="sumar btn btn-secondary fs-5">+</button>
+                    </div>
+                    <button id="${producto.id}" class="add-to-cart btn btn-primary mt-2 fs-5" disabled>Agregar</button>
                 </div>
             </div>`
 }
@@ -86,10 +91,34 @@ function cargarProductos(stock) {
     if (stock.length > 0) {
         contenedor.innerHTML = ""
         stock.forEach((producto) => contenedor.innerHTML += crearCardHTML(producto))
+        sumarCantidad()
         activarClickEnBotones()
     } else {
         contenedor.innerHTML = crearCardError()
     }
+}
+
+function sumarCantidad() {
+    const botonesRestar = document.querySelectorAll(".sumar")
+    botonesRestar.forEach((boton) => { // e, ev, evt, event
+        boton.addEventListener("click", (e) => {
+
+            const id = parseInt(e.target.id.split("-")[1])
+
+            const cantidadRequerida = document.querySelector(`#cantidad-${id}`)
+
+            if (cantidadRequerida.value < 6) {
+                cantidadRequerida.value++
+            } else {
+                MaxProdToast()
+            }
+
+            if (cantidadRequerida.value == 6) {
+                e.target.id.disabled = true
+            } else { }
+
+        })
+    })
 }
 
 function activarClickEnBotones() {
@@ -107,7 +136,6 @@ function activarClickEnBotones() {
             agregarProductoToast()
         })
     })
-
 }
 
 cargarProductos(productos)
@@ -136,6 +164,24 @@ filterButtonMerchandising.addEventListener("click", function () {
 })
 
 /* Toast y Q productos en carrito */
+function MaxProdToast() {
+    Toastify({
+        text: "Cantidad máxima alcanzada",
+        offset: {
+            y: 10
+        },
+        duration: 3000,
+        gravity: "bottom",
+        positionLeft: false,
+        style: {
+            color: "black",
+            background: "#F2E740",
+            minWidth: "210px",
+            height: "auto"
+        },
+    }).showToast()
+}
+
 function agregarProductoToast() {
     Toastify({
         text: "¡Producto agregado!",
@@ -168,3 +214,5 @@ function actualizarCantidadImagen() {
         cantCarritoMerch.textContent = parseInt(carritoMerchandising.length)
     }
 }
+
+const cantidadRequerida = document.querySelectorAll(".cantidadRequerida")
