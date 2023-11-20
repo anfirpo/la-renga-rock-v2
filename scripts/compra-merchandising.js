@@ -91,6 +91,7 @@ function cargarProductos(stock) {
     if (stock.length > 0) {
         contenedor.innerHTML = ""
         stock.forEach((producto) => contenedor.innerHTML += crearCardHTML(producto))
+        restarCantidad()
         sumarCantidad()
         activarClickEnBotones()
     } else {
@@ -98,14 +99,41 @@ function cargarProductos(stock) {
     }
 }
 
-function sumarCantidad() {
-    const botonesRestar = document.querySelectorAll(".sumar")
+function restarCantidad() {
+    const botonesRestar = document.querySelectorAll(".restar")
     botonesRestar.forEach((boton) => { // e, ev, evt, event
         boton.addEventListener("click", (e) => {
 
             const id = parseInt(e.target.id.split("-")[1])
 
             const cantidadRequerida = document.querySelector(`#cantidad-${id}`)
+            const botonAgregar = document.getElementById(id)
+
+            if (cantidadRequerida.value > 0) {
+                cantidadRequerida.value--
+
+                if (cantidadRequerida.value == 0) {
+                    e.target.id.disabled = true
+                    botonAgregar.disabled = true
+                } else { }
+
+            } else { }
+
+        })
+    })
+}
+
+function sumarCantidad() {
+    const botonesSumar = document.querySelectorAll(".sumar")
+    botonesSumar.forEach((boton) => { // e, ev, evt, event
+        boton.addEventListener("click", (e) => {
+
+            const id = parseInt(e.target.id.split("-")[1])
+
+            const cantidadRequerida = document.querySelector(`#cantidad-${id}`)
+            const botonAgregar = document.getElementById(id)
+
+            botonAgregar.disabled = false
 
             if (cantidadRequerida.value < 6) {
                 cantidadRequerida.value++
