@@ -63,10 +63,12 @@ listaCategorias.forEach((cat) => {
 
 /* Sección para productos en tarjetas */
 function crearCardError() {
-    return `<div class="div-card-error">
-                <div class="imagen-error">🤦🏻‍♂️</div>
-                <div class="leyenda-error">No pudimos cargar los productos</div>
-                <div class="leyenda-intento">Intenta nuevamente en unos segundos.</div>
+    return `<div class="card my-3" style="width: 20rem">
+                <img src="../img/merchandising/producto-inexistente.jpg" class="card-img-top" alt="Producto inexistente">
+                <div class="card-body text-center">
+                    <div class="card-title fs-4 text-danger fw-bold my-3">El producto buscado no forma parte de nuestro catálogo</div>
+                    <div class="card-text fs-5 my-3">Por favor, intentá con otro producto!</div>
+                </div>
             </div>`
 }
 
