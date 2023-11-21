@@ -156,12 +156,17 @@ function activarClickEnBotones() {
 
             const id = parseInt(e.target.id)
             const productoSeleccionado = productos.find((producto) => producto.id === id)
+
+            const inputCard = document.getElementById(`cantidad-${id}`)
+            productoSeleccionado.cantidad = parseInt(inputCard.value)
+
             carritoMerchandising.push(productoSeleccionado)
 
             localStorage.setItem("carritoMerchandising", JSON.stringify(carritoMerchandising))
 
             actualizarCantidadImagen()
             agregarProductoToast()
+            limpiarVariables(inputCard, boton)
         })
     })
 }
@@ -190,6 +195,12 @@ filterButtonMerchandising.addEventListener("click", function () {
         console.log("No filtré")
     }
 })
+
+/* Limpiar las variables luego de agregar el producto */
+function limpiarVariables(input, button) {
+    input.value = 0
+    button.disabled = true
+}
 
 /* Toast y Q productos en carrito */
 function MaxProdToast() {
