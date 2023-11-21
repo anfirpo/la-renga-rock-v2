@@ -72,8 +72,8 @@ if (carritoMerchandising && carritoMerchandising.length != 0) {
                         <div class="col-md-10 col-sm-12">
                             <h5 class="card-title fst-italic py-2 fs-6">. Categoria: ${seleccion.categoria}</h5>
                             <p class="card-text py-2 fs-6">. p/u: $${seleccion.precio}</p>
-                            <p class="card-text py-2 fs-6">. Cantidad: 3 unidades</p>
-                            <h5 class="card-title py-2 fw-bold fs-6">. Total: $${parseInt(seleccion.precio) * parseInt(3)}</h5>
+                            <p class="card-text py-2 fs-6">. Cantidad: ${seleccion.cantidad} unidades</p>
+                            <h5 class="card-title py-2 fw-bold fs-6">. Total: $${parseInt(seleccion.precio) * parseInt(seleccion.cantidad)}</h5>
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <img src="${seleccion.imagen}" class="card-img-top mb-5 mt-3" alt="${seleccion.nombre}">
@@ -122,7 +122,7 @@ if (carritoMerchandising && carritoMerchandising.length != 0) {
 
                 let nombreProducto = document.createElement("p")
                 nombreProducto.classList.add("card-text", "mb-5", "mt-3")
-                nombreProducto.textContent = ". 3 x " + seleccion.nombre
+                nombreProducto.textContent = ". " + seleccion.cantidad + " x " + seleccion.nombre
                 carritoResumenMerch.appendChild(nombreProducto)
 
                 /* Obtengo el primer hijo del div carritoResumenMerch */
@@ -134,7 +134,7 @@ if (carritoMerchandising && carritoMerchandising.length != 0) {
             })
 
             /* Calculo Subtotal, coste de servicio, y total: */
-            subtotalResumenValorMerch = carritoMerchandising.reduce((total, producto) => total + (producto.precio * 3), 0)
+            subtotalResumenValorMerch = carritoMerchandising.reduce((total, producto) => total + (producto.precio * producto.cantidad), 0)
             subtotalResumenMerch.textContent = "Subtotal: $" + subtotalResumenValorMerch
 
             costoServicioResumenValorMerch = parseInt(((subtotalResumenValorMerch * 3) / 100) * carritoMerchandising.length)
