@@ -157,7 +157,7 @@ function activarClickEnBotones() {
         boton.addEventListener("click", (e) => {
 
             const id = parseInt(e.target.id)
-            const productoSeleccionado = productos.find((producto) => producto.id === id)
+            const productoSeleccionado = { ...productos.find((producto) => producto.id === id) }
 
             const inputCard = document.getElementById(`cantidad-${id}`)
             productoSeleccionado.cantidad = parseInt(inputCard.value)
