@@ -1,0 +1,22 @@
+[
+    {
+        "sector": "PLATEA ALTA",
+        "precio": 15000
+    },
+    {
+        "sector": "PLATEA BAJA",
+        "precio": 20000
+    },
+    {
+        "sector": "POPULAR",
+        "precio": 10000
+    },
+    {
+        "sector": "CAMPO",
+        "precio": 12500
+    },
+    {
+        "sector": "CAMPO VIP",
+        "precio": 25000
+    }
+]

@@ -2,6 +2,13 @@
 /* ****************** COMPRA ENTRADAS ***************** */
 /* **************************************************** */
 
+/* Creo los arrays que voy a utilizar */
+const cantidad = [1, 2, 3, 4, 5]
+const fechas = []
+const sectores = []
+const urlfechas = "../scripts/fechas.json"
+const urlsectores = "../scripts/sectores.json"
+
 /* Creo las variables que apuntan a los filtros en HTML: */
 let filterInput = document.getElementById("filterInput")
 let filterButton = document.getElementById("filterButton")
@@ -45,6 +52,23 @@ class Seleccion {
         this.preciototal = precioUnitario * cantidad
     }
 }
+
+/* Utilización de JSON y FETCH */
+function cargarFechas() {
+    fetch(urlfechas)
+        .then((response) => response.json()) /* Convierto los datos del json a una estructura conocida por js */
+        .then((data) => fechas.push(...data)) /* Guardo los datos que recién convertí en una constante conocida */
+}
+
+function cargarSectores() {
+    fetch(urlsectores)
+        .then((response) => response.json()) /* Convierto los datos del json a una estructura conocida por js */
+        .then((data) => sectores.push(...data)) /* Guardo los datos que recién convertí en una constante conocida */
+        .then(() => llenarDropdownSectores())
+}
+
+cargarFechas()
+cargarSectores()
 
 /* Declaro los botones de descarte y compra */
 let botonDescartarCompra = document.getElementById("botonDescartarCompra")
@@ -175,33 +199,36 @@ filterButton.addEventListener("click", function () {
     }
 })
 
-/* Llenar el Dropdown de sectores con JavaScript: */
-sectores.forEach(function (sector) {
-    let elemento = document.createElement("a")
-    elemento.classList.add("dropdown-item")
+function llenarDropdownSectores() {
+    /* Llenar el Dropdown de sectores con JavaScript: */
+    sectores.forEach(function (sector) {
+        let elemento = document.createElement("a")
+        elemento.classList.add("dropdown-item")
 
-    /* Creo el template string "sectoresTemplate" */
-    let sectoresTemplate = `${sector.sector} - $${sector.precio}`
-    elemento.textContent = sectoresTemplate
+        /* Creo el template string "sectoresTemplate" */
+        let sectoresTemplate = `${sector.sector} - $${sector.precio}`
+        elemento.textContent = sectoresTemplate
 
-    elemento.addEventListener("click", function () {
+        elemento.addEventListener("click", function () {
 
-        sectorRecital.value = sectoresTemplate
+            sectorRecital.value = sectoresTemplate
 
-        sectorLugar = sector.sector
-        sectorPrecio = parseInt(sector.precio)
+            sectorLugar = sector.sector
+            sectorPrecio = parseInt(sector.precio)
 
-        /* Hago la cuenta del total de compra de esta selección. Esta sentencia la tengo que escribir acá ya que, en el caso de haber elegido una opción para cada dropdown, si yo quisiera modificar luego un sector, sin modificar la cantidad de entradas a comprar, esta es la forma en que se actualizaría el total */
-        totalRecitalValor.value = entradasRecital.value * sectorPrecio
+            /* Hago la cuenta del total de compra de esta selección. Esta sentencia la tengo que escribir acá ya que, en el caso de haber elegido una opción para cada dropdown, si yo quisiera modificar luego un sector, sin modificar la cantidad de entradas a comprar, esta es la forma en que se actualizaría el total */
+            totalRecitalValor.value = entradasRecital.value * sectorPrecio
 
-        if (dropdownCantidad.classList.contains("show")) {
-        } else {
-            sectorRecital.classList.toggle("show")
-            dropdownCantidad.classList.toggle("show")
-        }
+            if (dropdownCantidad.classList.contains("show")) {
+            } else {
+                sectorRecital.classList.toggle("show")
+                dropdownCantidad.classList.toggle("show")
+            }
+        })
+        dropdownMenuSectores.appendChild(elemento)
     })
-    dropdownMenuSectores.appendChild(elemento)
-})
+}
+
 
 /* Llenar el Dropdown de cantidad con JavaScript: */
 cantidad.forEach(function (cant) {
