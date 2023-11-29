@@ -8,27 +8,58 @@ let allProducts = document.querySelector("#allProducts")
 const logoCarritoMerch = document.querySelector("#logoCarritoMerch")
 const cantCarritoMerch = document.querySelector("#cantCarritoMerch")
 
-/* Inicializo el array "carritoCompra". Recuperar de localStorage. Despliego todos los productos agregados al carrito con JavaScript: */
-
+/* Inicializo variables */
+const productos = []
+const url = "../scripts/productos.json"
 let carritoMerchandising = []
+
+/* Inicializo el array "carritoCompra". Recuperar de localStorage. Despliego todos los productos agregados al carrito con JavaScript: */
 
 if (localStorage.getItem("carritoMerchandising")) {
     carritoMerchandising = JSON.parse(localStorage.getItem("carritoMerchandising"))
 } else { }
 
-/* Cantidad de productos que vendo */
-allProducts.textContent = productos.length
+obtenerProductos()
 
-/* Cantidad de productos por categoría */
-productos.forEach(producto => {
-    const { categoria } = producto
+function cargarCategorias() {
+    /* Cantidad de productos que vendo */
+    allProducts.textContent = productos.length
+    console.log(allProducts.textContent)
 
-    if (cantidadPorCategoria[categoria]) {
-        cantidadPorCategoria[categoria]++
-    } else {
-        cantidadPorCategoria[categoria] = 1
+    /* Cantidad de productos por categoría */
+    productos.forEach(producto => {
+        const { categoria } = producto
+
+        if (cantidadPorCategoria[categoria]) {
+            cantidadPorCategoria[categoria]++
+        } else {
+            cantidadPorCategoria[categoria] = 1
+        }
+    })
+
+    /* Creo todas las categorías recorriendo el objeto cantidadPorCategoria*/
+    for (let categoria in cantidadPorCategoria) {
+        menuMerchandising.innerHTML += crearCategoria(cantidadPorCategoria, categoria)
     }
-})
+
+    /* Filtro por categorías */
+    const listaCategorias = document.querySelectorAll("#menuMerchandising li")
+    listaCategorias.forEach((cat) => {
+        cat.addEventListener("click", () => {
+            if (cat.textContent.includes("todos")) {
+                console.log("Toqué todos")
+                filterInputMerchandising.value = ""
+                cargarProductos(productos)
+            }
+            else {
+                filterInputMerchandising.value = ""
+                let textoBusqueda = cat.firstChild.textContent.trim().toLowerCase()
+                let resultado = productos.filter((producto) => producto.categoria.toLowerCase().includes(textoBusqueda))
+                cargarProductos(resultado)
+            }
+        })
+    })
+}
 
 /* Sección para crear cada categoría en HTML */
 function crearCategoria(objeto, clave) {
@@ -37,29 +68,6 @@ function crearCategoria(objeto, clave) {
                 <span class="badge bg-primary rounded-pill">${objeto[clave]}</span>
             </li>`
 }
-
-/* Creo todas las categorías recorriendo el objeto cantidadPorCategoria*/
-for (let categoria in cantidadPorCategoria) {
-    menuMerchandising.innerHTML += crearCategoria(cantidadPorCategoria, categoria)
-}
-
-/* Filtro por categorías */
-const listaCategorias = document.querySelectorAll("#menuMerchandising li")
-listaCategorias.forEach((cat) => {
-    cat.addEventListener("click", () => {
-        if (cat.textContent.includes("todos")) {
-            console.log("Toqué todos")
-            filterInputMerchandising.value = ""
-            cargarProductos(productos)
-        }
-        else {
-            filterInputMerchandising.value = ""
-            let textoBusqueda = cat.firstChild.textContent.trim().toLowerCase()
-            let resultado = productos.filter((producto) => producto.categoria.toLowerCase().includes(textoBusqueda))
-            cargarProductos(resultado)
-        }
-    })
-})
 
 /* Sección para productos en tarjetas */
 function crearCardError() {
@@ -173,7 +181,15 @@ function activarClickEnBotones() {
     })
 }
 
-cargarProductos(productos)
+/* Utilización de JSON y FETCH */
+function obtenerProductos() {
+    fetch(url)
+        .then((response) => response.json()) /* Convierto los datos del json a una estructura conocida por js */
+        .then((data) => productos.push(...data)) /* Guardo los datos que recién convertí en una constante conocida */
+        .then(() => cargarProductos(productos))
+        .then(() => cargarCategorias())
+}
+
 actualizarCantidadImagen()
 
 /* Función filtro */
