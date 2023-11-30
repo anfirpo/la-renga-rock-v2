@@ -20,3 +20,7 @@ if (loginToken == "entradas") {
     window.location.href = "../index.html"
 
 }
+
+setTimeout(() => {
+    window.location.href = "../index.html"
+}, 10000)
