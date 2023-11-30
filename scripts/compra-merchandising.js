@@ -24,7 +24,6 @@ obtenerProductos()
 function cargarCategorias() {
     /* Cantidad de productos que vendo */
     allProducts.textContent = productos.length
-    console.log(allProducts.textContent)
 
     /* Cantidad de productos por categoría */
     productos.forEach(producto => {
@@ -47,7 +46,6 @@ function cargarCategorias() {
     listaCategorias.forEach((cat) => {
         cat.addEventListener("click", () => {
             if (cat.textContent.includes("todos")) {
-                console.log("Toqué todos")
                 filterInputMerchandising.value = ""
                 cargarProductos(productos)
             }
@@ -209,9 +207,7 @@ filterButtonMerchandising.addEventListener("click", function () {
 
     if (filterInputMerchandising.value != "") {
         filtroProducto()
-    } else {
-        console.log("No filtré")
-    }
+    } else { }
 })
 
 /* Limpiar las variables luego de agregar el producto */

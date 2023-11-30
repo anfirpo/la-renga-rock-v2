@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = "compra-merchandising.html"
         } else {
             console.log("Surgió un error poco común")
+            window.location.href = "../index.html"
         }
     })
 
