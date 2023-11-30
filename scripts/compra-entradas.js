@@ -141,7 +141,6 @@ dropdownFechasButton.addEventListener("click", function () {
             filtroNoValido()
         }
     } else {
-        console.log("No filtré")
         llenarDropdownFechas(fechas)
     }
 })
