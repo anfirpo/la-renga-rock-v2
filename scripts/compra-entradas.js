@@ -63,8 +63,10 @@ function cargarFechas() {
 function cargarSectores() {
     fetch(urlsectores)
         .then((response) => response.json()) /* Convierto los datos del json a una estructura conocida por js */
-        .then((data) => sectores.push(...data)) /* Guardo los datos que recién convertí en una constante conocida */
-        .then(() => llenarDropdownSectores())
+        .then((data) => {
+            sectores.push(...data) /* Guardo los datos que recién convertí en una constante conocida */
+            llenarDropdownSectores()
+        })
 }
 
 cargarFechas()
